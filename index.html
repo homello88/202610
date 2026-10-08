@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>家装经营与团队作战 · 学习课件</title>
+<style>
+:root{
+  --bg:#eef2f7;
+  --card:#ffffff;
+  --ink:#15212e;
+  --ink2:#33475b;
+  --sub:#6b7d90;
+  --line:#e1e9f1;
+  --brand:#25537d;
+  --brand-2:#3a7cb5;
+  --brand-l:#eaf2f9;
+  --gold:#b1802a;
+  --gold-l:#fbf4e4;
+  --ok:#1c8262;
+  --ok-l:#e6f5ef;
+  --warn:#c0392b;
+  --warn-l:#fdeeec;
+  --m1:#25537d; --m1l:#e9f1f8;
+  --m2:#1c8262; --m2l:#e6f5ef;
+  --m3:#bf6a2c; --m3l:#fbeee2;
+  --m4:#7a4fb0; --m4l:#f1eaf9;
+  --shadow:0 1px 2px rgba(16,35,56,.05),0 10px 28px rgba(16,35,56,.07);
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Source Han Sans SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg); color:var(--ink);
+  font-size:15px; line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:200}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#25537d,#3a7cb5,#b1802a);transition:width .12s linear}
+.app{display:flex;min-height:100vh}
+.sidebar{
+  width:272px;flex:0 0 272px;position:sticky;top:0;height:100vh;overflow-y:auto;
+  background:#fff;border-right:1px solid var(--line);padding:22px 0 40px;
+}
+.sidebar::-webkit-scrollbar{width:6px}
+.sidebar::-webkit-scrollbar-thumb{background:#d5dfe9;border-radius:3px}
+.brand{display:flex;gap:11px;align-items:center;padding:0 20px 18px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.brand-mark{
+  width:40px;height:40px;flex:0 0 40px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(140deg,#25537d,#3a7cb5);color:#fff;font-weight:700;font-size:17px;
+  box-shadow:0 4px 12px rgba(37,83,125,.28);
+}
+.brand-title{font-size:14.5px;font-weight:700;letter-spacing:.2px;line-height:1.3}
+.brand-sub{font-size:11.5px;color:var(--sub);margin-top:2px}
+.nav-group{
+  font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--sub);
+  padding:16px 20px 7px;
+}
+.nav-link{
+  display:block;padding:7px 20px 7px 22px;font-size:13.5px;color:var(--ink2);
+  text-decoration:none;border-left:3px solid transparent;transition:.16s;
+}
+.nav-link:hover{background:var(--brand-l);color:var(--brand)}
+.nav-link.active{color:var(--brand);font-weight:700;background:var(--brand-l);border-left-color:var(--brand)}
+.nav-link.sub{padding-left:34px;font-size:13px;color:#5d7086}
+.nav-link.sub.active{color:var(--brand)}
+.main{flex:1;min-width:0;padding:0 clamp(18px,4vw,56px) 90px;max-width:1180px}
+.menu-btn{display:none}
+section{padding:52px 0 10px;scroll-margin-top:18px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 28px;box-shadow:var(--shadow);margin-bottom:24px;
+}
+h1{font-size:33px;line-height:1.3;letter-spacing:-.4px}
+h2{font-size:24px;letter-spacing:-.2px;margin-bottom:4px}
+h3{font-size:18px;color:var(--brand);margin:26px 0 12px;display:flex;align-items:center;gap:9px}
+h3::before{content:"";width:5px;height:18px;border-radius:3px;background:linear-gradient(#25537d,#3a7cb5)}
+h4{font-size:15.5px;margin:18px 0 8px;color:var(--ink)}
+p{margin:9px 0;color:var(--ink2)}
+.lead{font-size:16px;color:var(--ink2)}
+.muted{color:var(--sub);font-size:13.5px}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;letter-spacing:1px;
+  color:var(--brand);background:var(--brand-l);padding:5px 13px;border-radius:999px;margin-bottom:12px;
+}
+.sec-head{margin-bottom:6px}
+.mod-band{
+  border-radius:var(--radius);padding:30px 30px;color:#fff;margin-bottom:26px;position:relative;overflow:hidden;
+  box-shadow:0 14px 34px rgba(16,35,56,.16);
+}
+.mod-band::after{content:"";position:absolute;right:-60px;top:-70px;width:230px;height:230px;border-radius:50%;background:rgba(255,255,255,.09)}
+.mod-band::before{content:"";position:absolute;right:40px;bottom:-90px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.06)}
+.mod-band .kicker{font-size:12.5px;letter-spacing:2px;opacity:.85;font-weight:600}
+.mod-band h2{color:#fff;font-size:27px;margin:6px 0 8px}
+.mod-band p{color:rgba(255,255,255,.9);max-width:760px;font-size:14.5px;margin:0}
+.m1-bg{background:linear-gradient(120deg,#1f4666,#2c6390)}
+.m2-bg{background:linear-gradient(120deg,#12664c,#1e9370)}
+.m3-bg{background:linear-gradient(120deg,#9c5520,#c8823d)}
+.m4-bg{background:linear-gradient(120deg,#5f3c8c,#8a5cc0)}
+.figure{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px 10px 6px;box-shadow:var(--shadow);margin:20px 0 26px}
+.figure svg{display:block;width:100%;height:auto}
+.fig-cap{text-align:center;font-size:12.5px;color:var(--sub);padding:2px 12px 12px}
+.fig-cap b{color:var(--ink2)}
+.grid{display:grid;gap:15px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr}}
+.tile{background:#fbfdff;border:1px solid var(--line);border-radius:13px;padding:17px 18px;transition:.18s}
+.tile:hover{border-color:#c6d9ea;box-shadow:0 6px 18px rgba(16,35,56,.07)}
+.tile .t-no{
+  display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;
+  background:var(--brand-l);color:var(--brand);font-size:12.5px;font-weight:700;margin-bottom:9px;
+}
+.tile h4{margin:0 0 6px;font-size:15px}
+.tile p{margin:0;font-size:13.3px;line-height:1.7;color:var(--ink2)}
+.tile.m1{border-top:3px solid var(--m1)} .tile.m1 .t-no{background:var(--m1l);color:var(--m1)}
+.tile.m2{border-top:3px solid var(--m2)} .tile.m2 .t-no{background:var(--m2l);color:var(--m2)}
+.tile.m3{border-top:3px solid var(--m3)} .tile.m3 .t-no{background:var(--m3l);color:var(--m3)}
+.tile.m4{border-top:3px solid var(--m4)} .tile.m4 .t-no{background:var(--m4l);color:var(--m4)}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;font-size:13.3px;font-weight:600;
+  padding:7px 15px;border-radius:999px;background:var(--brand-l);color:var(--brand);border:1px solid #d5e5f2;
+}
+.chip.gold{background:var(--gold-l);color:var(--gold);border-color:#efdfb8}
+.callout{border-radius:13px;padding:16px 18px 16px 50px;margin:16px 0;position:relative;font-size:14px;line-height:1.75}
+.callout::before{position:absolute;left:16px;top:15px;font-size:17px;line-height:1}
+.callout .ct{display:block;font-weight:700;margin-bottom:4px;font-size:13.5px;letter-spacing:.3px}
+.callout.quote{background:var(--gold-l);border:1px solid #f0e2bf;color:#7d5a14}
+.callout.quote::before{content:"❝"}
+.callout.quote .ct{color:var(--gold)}
+.callout.tip{background:var(--ok-l);border:1px solid #cbe9dd;color:#155f48}
+.callout.tip::before{content:"✓"}
+.callout.tip .ct{color:var(--ok)}
+.callout.warn{background:var(--warn-l);border:1px solid #f6d5d1;color:#8f2b20}
+.callout.warn::before{content:"✕"}
+.callout.warn .ct{color:var(--warn)}
+.callout.info{background:var(--brand-l);border:1px solid #d7e7f3;color:#1d4265}
+.callout.info::before{content:"◆"}
+.callout.info .ct{color:var(--brand)}
+.script{
+  background:#f7fafd;border:1px dashed #c3d8ea;border-radius:12px;padding:13px 16px;margin:10px 0;
+  font-size:13.6px;color:#274358;line-height:1.8;
+}
+.script::before{content:"话术";display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;color:#5b8cb5;background:#e6f0f8;border-radius:5px;padding:1px 7px;margin-right:9px;vertical-align:2px}
+ul.clean{list-style:none;margin:10px 0}
+ul.clean li{position:relative;padding-left:20px;margin:7px 0;color:var(--ink2);font-size:14px}
+ul.clean li::before{content:"";position:absolute;left:4px;top:10px;width:6px;height:6px;border-radius:50%;background:var(--brand-2)}
+ul.clean.ck li::before{content:"✓";background:none;color:var(--ok);font-weight:700;top:0;left:2px;width:auto;height:auto;font-size:13px}
+ul.clean.x li::before{content:"✕";background:none;color:var(--warn);font-weight:700;top:0;left:2px;width:auto;height:auto;font-size:13px}
+.steps{margin:14px 0}
+.step{display:flex;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:none}
+.step .ball{
+  flex:0 0 30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;
+  background:linear-gradient(140deg,#25537d,#3a7cb5);color:#fff;box-shadow:0 3px 8px rgba(37,83,125,.25);
+}
+.step .bd{flex:1;min-width:0}
+.step .bd h4{margin:2px 0 4px;font-size:15px}
+.step .bd p{margin:0;font-size:13.5px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.6px;background:#fff;border-radius:12px;overflow:hidden}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f4f8fc;color:var(--brand);font-size:13px;letter-spacing:.3px;font-weight:700}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafcff}
+td strong{color:var(--ink)}
+.cover{
+  border-radius:22px;padding:60px 54px;color:#fff;position:relative;overflow:hidden;margin-top:34px;
+  background:linear-gradient(135deg,#14293d 0%,#1f4666 45%,#2c6390 100%);
+  box-shadow:0 22px 55px rgba(16,35,56,.28);
+}
+.cover::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.14),transparent 68%)}
+.cover::before{content:"";position:absolute;left:-70px;bottom:-120px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(177,128,42,.28),transparent 68%)}
+.cover .badge{display:inline-block;font-size:12.5px;letter-spacing:2px;font-weight:600;padding:6px 15px;border:1px solid rgba(255,255,255,.35);border-radius:999px;margin-bottom:20px;position:relative;z-index:2}
+.cover h1{color:#fff;position:relative;z-index:2;font-size:clamp(26px,4.4vw,40px)}
+.cover .cv-sub{font-size:16.5px;color:rgba(255,255,255,.84);margin-top:14px;position:relative;z-index:2;max-width:660px}
+.cover .cv-meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;position:relative;z-index:2}
+.cover .cv-meta span{font-size:13px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:8px 15px}
+.cover .line{width:64px;height:4px;border-radius:3px;background:linear-gradient(90deg,#d9b463,#b1802a);margin:22px 0 0;position:relative;z-index:2}
+.divider{height:1px;background:var(--line);margin:26px 0}
+.endnote{
+  margin-top:40px;border-radius:18px;padding:38px 34px;text-align:center;
+  background:linear-gradient(135deg,#14293d,#25537d);color:#fff;box-shadow:0 16px 40px rgba(16,35,56,.2);
+}
+.endnote h2{color:#fff}
+.endnote p{color:rgba(255,255,255,.86);font-size:15px}
+.endnote .big{font-size:19px;font-weight:700;color:#e6c778;margin:14px 0;line-height:1.8}
+.qwall{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:22px}
+@media(max-width:900px){.qwall{grid-template-columns:1fr}}
+.qcard{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);border-radius:13px;padding:16px 18px;text-align:left}
+.qcard b{display:block;color:#e6c778;font-size:12.5px;letter-spacing:1px;margin-bottom:6px}
+.qcard span{font-size:14px;color:rgba(255,255,255,.92);line-height:1.75}
+@media(max-width:1024px){
+  .sidebar{position:fixed;left:0;top:0;z-index:150;transform:translateX(-100%);transition:transform .25s;box-shadow:0 0 40px rgba(0,0,0,.2)}
+  .sidebar.open{transform:translateX(0)}
+  .main{padding-top:60px}
+  .menu-btn{
+    display:flex;align-items:center;gap:8px;position:fixed;top:12px;left:14px;z-index:160;
+    background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:13.5px;font-weight:600;
+    color:var(--brand);box-shadow:var(--shadow);cursor:pointer;
+  }
+  .cover{padding:42px 26px}
+  .card{padding:20px 18px}
+}
+@media(max-width:600px){
+  body{font-size:14.4px}
+  h1{font-size:26px} h2{font-size:21px}
+  .mod-band{padding:22px 20px}
+}
+</style>
+</head>
+<body>
+<div class="progress"><div class="progress-bar" id="pbar"></div></div>
+<button class="menu-btn" id="menuBtn">☰ 目录</button>
+
+<div class="app">
+<aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <div class="brand-mark">郑</div>
+    <div>
+      <div class="brand-title">家装经营与团队作战</div>
+      <div class="brand-sub">2026 战略指导 · 学习课件</div>
+    </div>
+  </div>
+  <nav id="nav">
+    <a class="nav-link active" href="#cover">课程导览</a>
+    <a class="nav-link" href="#map">学习地图 · 全课结构</a>
+
+    <div class="nav-group">模块一 · 小而美经营战略</div>
+    <a class="nav-link sub" href="#m1">模块导入</a>
+    <a class="nav-link sub" href="#m1-strategy">战略核心 · 高质量经营</a>
+    <a class="nav-link sub" href="#m1-cost">成本战略 · 极致控本</a>
+    <a class="nav-link sub" href="#m1-people">人效战略 · 训练提效</a>
+    <a class="nav-link sub" href="#m1-delivery">交付战略 · 高效协同</a>
+    <a class="nav-link sub" href="#m1-bottom">经营底线 · 保利润</a>
+
+    <div class="nav-group">模块二 · 家装顾问管理与培训</div>
+    <a class="nav-link sub" href="#m2">模块导入</a>
+    <a class="nav-link sub" href="#m2-manage">管理体系 · 五靠四留痕</a>
+    <a class="nav-link sub" href="#m2-train">培训体系 · 五库一标准</a>
+    <a class="nav-link sub" href="#m2-channel">实战案例 · 中介渠道打法</a>
+    <a class="nav-link sub" href="#m2-quote">执行金句与特质</a>
+
+    <div class="nav-group">模块三 · 跟单方法及要求</div>
+    <a class="nav-link sub" href="#m3">模块导入 · 美平精神</a>
+    <a class="nav-link sub" href="#m3-case1">情况一 · 邀客进店</a>
+    <a class="nav-link sub" href="#m3-case2">情况二 · 比价跟单</a>
+    <a class="nav-link sub" href="#m3-case3">情况三 · 锁客促成</a>
+
+    <div class="nav-group">模块四 · 设计师培训及谈单</div>
+    <a class="nav-link sub" href="#m4">模块导入</a>
+    <a class="nav-link sub" href="#m4-standard">能力标准 · 七大素养</a>
+    <a class="nav-link sub" href="#m4-talk">谈单闭环 · 七步法</a>
+    <a class="nav-link sub" href="#m4-rate">提高转单率 · 五步复盘</a>
+
+    <div class="nav-group">收尾</div>
+    <a class="nav-link" href="#end">核心金句墙</a>
+  </nav>
+</aside>
+
+<main class="main">
+
+<section id="cover" style="padding-top:34px">
+  <div class="cover">
+    <span class="badge">团队内部培训 · 学习课件</span>
+    <h1>家装经营与团队作战<br>完整学习课件</h1>
+    <p class="cv-sub">从<b>经营战略</b>到<b>顾问管理</b>，从<b>跟单执行</b>到<b>设计师谈单</b>——四个模块、一条主线：用专业赢信任，用品质赢口碑，用精细赢利润。</p>
+    <div class="line"></div>
+    <div class="cv-meta">
+      <span>📘 四大模块</span>
+      <span>🧭 16 张逻辑图</span>
+      <span>🎯 团队内部培训专用</span>
+      <span>📅 2026 郑总战略指导</span>
+    </div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="sec-head">
+    <span class="eyebrow">◆ 全课全景</span>
+    <h2>学习地图：一图看懂四个模块</h2>
+    <p class="lead">四个模块不是四篇独立的文章，而是一条完整链路——<b>先定方向，再带团队，再抓过程，最后强专业</b>。缺任何一环，前端再努力也难出高质量订单。</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 940 520" role="img" aria-label="四个模块的学习地图思维导图">
+      <defs>
+        <linearGradient id="hubG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2c6390"/><stop offset="1" stop-color="#1b3f5d"/>
+        </linearGradient>
+      </defs>
+      <path d="M360 260 C310 260 300 200 300 150 L310 150" fill="none" stroke="#c8d8e6" stroke-width="2.5"/>
+      <path d="M360 260 C310 260 300 330 300 380 L310 380" fill="none" stroke="#c8d8e6" stroke-width="2.5"/>
+      <path d="M580 260 C630 260 640 200 640 150 L630 150" fill="none" stroke="#c8d8e6" stroke-width="2.5"/>
+      <path d="M580 260 C630 260 640 330 640 380 L630 380" fill="none" stroke="#c8d8e6" stroke-width="2.5"/>
+      <rect x="355" y="208" width="230" height="104" rx="18" fill="url(#hubG)"/>
+      <text x="470" y="245" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">家装经营</text>
+      <text x="470" y="271" text-anchor="middle" font-size="19" font-weight="700" fill="#ffffff">团队作战体系</text>
+      <text x="470" y="294" text-anchor="middle" font-size="11.5" fill="#a9c6de" letter-spacing="1">2026 战略指导</text>
+
+      <rect x="36" y="40" width="274" height="118" rx="15" fill="#f3f8fc" stroke="#25537d" stroke-width="1.6"/>
+      <rect x="36" y="40" width="274" height="5" rx="2.5" fill="#25537d"/>
+      <text x="60" y="72" font-size="11.5" font-weight="700" fill="#25537d" letter-spacing="1">模块一 · 战略层</text>
+      <text x="60" y="99" font-size="17" font-weight="700" fill="#16283b">小而美的经营战略</text>
+      <text x="60" y="124" font-size="12.4" fill="#4a6076">定方向：放弃虚规模，只做高质量</text>
+      <text x="60" y="144" font-size="12.4" fill="#4a6076">成本 · 人效 · 交付 · 底线 四大支柱</text>
+
+      <rect x="36" y="362" width="274" height="118" rx="15" fill="#eff9f5" stroke="#1c8262" stroke-width="1.6"/>
+      <rect x="36" y="362" width="274" height="5" rx="2.5" fill="#1c8262"/>
+      <text x="60" y="394" font-size="11.5" font-weight="700" fill="#1c8262" letter-spacing="1">模块二 · 管理层</text>
+      <text x="60" y="421" font-size="17" font-weight="700" fill="#16283b">家装顾问管理与培训</text>
+      <text x="60" y="446" font-size="12.4" fill="#4a6076">带团队：制度·表格·痕迹·监督·奖惩</text>
+      <text x="60" y="466" font-size="12.4" fill="#4a6076">素材库＋话术库，攻克中介渠道</text>
+
+      <rect x="630" y="40" width="274" height="118" rx="15" fill="#fdf6ef" stroke="#bf6a2c" stroke-width="1.6"/>
+      <rect x="630" y="40" width="274" height="5" rx="2.5" fill="#bf6a2c"/>
+      <text x="654" y="72" font-size="11.5" font-weight="700" fill="#bf6a2c" letter-spacing="1">模块三 · 执行层</text>
+      <text x="654" y="99" font-size="17" font-weight="700" fill="#16283b">跟单方法及要求</text>
+      <text x="654" y="124" font-size="12.4" fill="#4a6076">抓过程：价值先行，穷追猛打</text>
+      <text x="654" y="144" font-size="12.4" fill="#4a6076">邀客进店 · 比价跟单 · 锁客促成</text>
+
+      <rect x="630" y="362" width="274" height="118" rx="15" fill="#f5f0fb" stroke="#7a4fb0" stroke-width="1.6"/>
+      <rect x="630" y="362" width="274" height="5" rx="2.5" fill="#7a4fb0"/>
+      <text x="654" y="394" font-size="11.5" font-weight="700" fill="#7a4fb0" letter-spacing="1">模块四 · 专业层</text>
+      <text x="654" y="421" font-size="17" font-weight="700" fill="#16283b">设计师培训及谈单</text>
+      <text x="654" y="446" font-size="12.4" fill="#4a6076">强专业：七大素养，七步闭环</text>
+      <text x="654" y="466" font-size="12.4" fill="#4a6076">复盘对单，把转单率做到极致</text>
+    </svg>
+    <div class="fig-cap"><b>图 1</b> 学习地图 —— 四个模块构成“定方向 → 带团队 → 抓过程 → 强专业”的闭环</div>
+  </div>
+
+  <div class="grid g4">
+    <div class="tile m1"><span class="t-no">一</span><h4>战略先行</h4><p>市场从增量转向缩量，必须放弃规模扩张，全面转向小而美的高质量经营路线。</p></div>
+    <div class="tile m2"><span class="t-no">二</span><h4>团队为本</h4><p>不靠自觉、不靠嘴说。顾问管理靠制度与痕迹，培训靠素材库与话术库长期打磨。</p></div>
+    <div class="tile m3"><span class="t-no">三</span><h4>过程为王</h4><p>客户可以犹豫，我们不能放弃。跟单拼的是韧性，用价值持续输出等待成交窗口。</p></div>
+    <div class="tile m4"><span class="t-no">四</span><h4>专业为核</h4><p>签单的关键人物是设计师。打造专业、有主见、能共情、能落地的高质量签单能力。</p></div>
+  </div>
+</section>
+
+<section id="m1">
+  <div class="mod-band m1-bg">
+    <div class="kicker">MODULE 01 · 战略层</div>
+    <h2>小而美 · 高质量经营战略</h2>
+    <p>市场已经彻底告别增量扩张，全面进入存量竞争、缩量竞争、极致内卷的新阶段。过去靠扩张规模、拼低价、拼人海战术的模式不再适配——战略必须彻底调整。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">本模块要解决的问题</span>
+    当市场不再增长，企业靠什么活下去、活得久？答案是：<b>不再追求做大做量，转向小而美、精而优、高质量、高利润、高口碑的精品化经营路线。</b>
+  </div>
+</section>
+
+<section id="m1-strategy">
+  <div class="sec-head">
+    <span class="eyebrow">1.1 战略核心</span>
+    <h2>放弃虚规模，深耕高质量经营</h2>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 330" role="img" aria-label="从增量扩张到存量缩量的战略转向对比图">
+      <rect x="26" y="34" width="342" height="250" rx="16" fill="#f4f6f8" stroke="#dbe3ea" stroke-width="1.5"/>
+      <text x="197" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#8b97a3">过去 · 增量扩张时代</text>
+      <line x1="66" y1="84" x2="328" y2="84" stroke="#dbe3ea" stroke-width="1"/>
+      <text x="197" y="115" text-anchor="middle" font-size="14" fill="#8b97a3">扩张规模 · 跑体量</text>
+      <text x="197" y="150" text-anchor="middle" font-size="14" fill="#8b97a3">拼低价 · 拼人海战术</text>
+      <text x="197" y="185" text-anchor="middle" font-size="14" fill="#8b97a3">接劣质单 · 低价跑量</text>
+      <text x="197" y="232" text-anchor="middle" font-size="13" fill="#a7b2bc">以“大”换生存</text>
+      <text x="197" y="258" text-anchor="middle" font-size="12.5" fill="#b3bcc5">利润薄 · 纠纷多 · 现金流紧张</text>
+      <path d="M388 159 L500 159" stroke="#25537d" stroke-width="3" fill="none"/>
+      <path d="M492 149 L508 159 L492 169 Z" fill="#25537d"/>
+      <text x="448" y="140" text-anchor="middle" font-size="12.5" font-weight="700" fill="#25537d">战略</text>
+      <text x="448" y="186" text-anchor="middle" font-size="12.5" font-weight="700" fill="#25537d">彻底转型</text>
+      <rect x="532" y="34" width="342" height="250" rx="16" fill="#eef5fb" stroke="#25537d" stroke-width="1.8"/>
+      <text x="703" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">未来 · 存量缩量时代</text>
+      <line x1="572" y1="84" x2="834" y2="84" stroke="#c9dcec" stroke-width="1"/>
+      <text x="703" y="115" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4265">小而美 · 精而优</text>
+      <text x="703" y="150" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4265">高质量 · 高利润 · 高口碑</text>
+      <text x="703" y="185" text-anchor="middle" font-size="14" font-weight="600" fill="#1d4265">只签高价值 · 无纠纷的优质订单</text>
+      <text x="703" y="232" text-anchor="middle" font-size="13" fill="#4a79a3">以“精”换长久</text>
+      <text x="703" y="258" text-anchor="middle" font-size="12.5" fill="#5b8cb5">利润稳 · 口碑优 · 现金流健康</text>
+    </svg>
+    <div class="fig-cap"><b>图 2</b> 战略转向 —— 从“以规模换生存”转为“以精细化换长久盈利”</div>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">战略核心主线（只围绕一条主线）</span>
+    不做规模最大，只做 <b>质量最好、利润最稳、口碑最优、现金流最健康</b>。不再低价跑量、不再接劣质单、不再消耗团队精力做低价值成交。
+  </div>
+
+  <h3>高质量订单的四条硬标准</h3>
+  <div class="grid g4">
+    <div class="tile m1"><span class="t-no">1</span><h4>客户精准</h4><p>品质意识强，认可专业价值，不是单纯来比价的客户。</p></div>
+    <div class="tile m1"><span class="t-no">2</span><h4>靠专业成交</h4><p>方案靠专业输出，不靠低价成交，守住价值底线。</p></div>
+    <div class="tile m1"><span class="t-no">3</span><h4>预算＝结算</h4><p>前期预算讲透、项目讲全、费用透明，杜绝后期增项扯皮。</p></div>
+    <div class="tile m1"><span class="t-no">4</span><h4>自带转介绍</h4><p>交付顺畅、满意度高、口碑可裂变，形成复购与转介绍。</p></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ct">正向经营循环</span>
+    靠专业赢得客户信任 → 靠透明消除客户顾虑 → 靠品质沉淀长期口碑 → 形成「<b>少而精、精而赚、赚而稳</b>」的正向循环。
+  </div>
+</section>
+
+<section id="m1-cost">
+  <div class="sec-head">
+    <span class="eyebrow">1.2 战略支柱一</span>
+    <h2>成本战略：极致控本、严控费用、杜绝浪费</h2>
+    <p class="lead">小而美的核心命脉，是精细化的成本管控。在缩量时代，<b>省钱就是利润，控费就是竞争力，精细就是生存力。</b></p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 300" role="img" aria-label="成本管控五项机制示意图">
+      <text x="450" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">费用管控五项机制 —— 让每一笔费用有人管</text>
+      <line x1="120" y1="52" x2="780" y2="52" stroke="#d7e3ee" stroke-width="2"/>
+      <rect x="42" y="86" width="150" height="86" rx="13" fill="#eef5fb" stroke="#bfd6e8" stroke-width="1.4"/>
+      <text x="117" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">归口管理</text>
+      <text x="117" y="147" text-anchor="middle" font-size="11.5" fill="#5b7a95">费用统一归口</text>
+      <rect x="204" y="86" width="150" height="86" rx="13" fill="#eef5fb" stroke="#bfd6e8" stroke-width="1.4"/>
+      <text x="279" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">专人监管</text>
+      <text x="279" y="147" text-anchor="middle" font-size="11.5" fill="#5b7a95">每笔费用有人盯</text>
+      <rect x="366" y="86" width="150" height="86" rx="13" fill="#eef5fb" stroke="#bfd6e8" stroke-width="1.4"/>
+      <text x="441" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">责任到人</text>
+      <text x="441" y="147" text-anchor="middle" font-size="11.5" fill="#5b7a95">谁花钱谁负责</text>
+      <rect x="528" y="86" width="150" height="86" rx="13" fill="#eef5fb" stroke="#bfd6e8" stroke-width="1.4"/>
+      <text x="603" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#25537d">月度复盘</text>
+      <text x="603" y="147" text-anchor="middle" font-size="11.5" fill="#5b7a95">每月回看改进</text>
+      <rect x="690" y="86" width="168" height="86" rx="13" fill="#fbf4e4" stroke="#e8d6a8" stroke-width="1.4"/>
+      <text x="774" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#b1802a">纳入考核</text>
+      <text x="774" y="147" text-anchor="middle" font-size="11.5" fill="#9a7c3c">与绩效强绑定</text>
+      <rect x="42" y="196" width="816" height="80" rx="13" fill="#f7fafd" stroke="#dbe6f0" stroke-width="1.4"/>
+      <text x="68" y="226" font-size="13.2" font-weight="700" fill="#1d4265">管理对象（部分）：<tspan font-size="12.2" font-weight="400" fill="#4a6076">差旅费 · 车费 · 维保费 · 物流费 · 安装费 · 瓷砖浪费 · 通讯费 · 错单 · 客诉 · 运营杂费</tspan></text>
+      <text x="68" y="254" font-size="13.2" font-weight="700" fill="#c0392b">坚决砍掉：<tspan font-size="12.2" font-weight="400" fill="#8f2b20">无效支出 · 浪费支出 · 重复性支出 · 管理漏洞支出</tspan></text>
+    </svg>
+    <div class="fig-cap"><b>图 3</b> 成本战略 —— 五项机制把“控本”从口号变成可监督、可考核的动作</div>
+  </div>
+
+  <div class="callout warn">
+    <span class="ct">用人铁律</span>
+    不养闲人、不养懒人、不养不能创造价值的人。一切岗位、一切费用、一切投入，全部以「<b>能否产生价值、能否创造利润</b>」为唯一标准。
+  </div>
+</section>
+
+<section id="m1-people">
+  <div class="sec-head">
+    <span class="eyebrow">1.3 战略支柱二</span>
+    <h2>人效战略：高强度训练、高专业能力、高效转单</h2>
+    <p class="lead">市场越难，专业越值钱。通过常态化训练、系统赋能、标准落地，全面提升前端谈单质量。</p>
+  </div>
+
+  <h3>团队必须练成的五项核心能力</h3>
+  <div class="chips">
+    <span class="chip">挖客能力</span>
+    <span class="chip">方案能力</span>
+    <span class="chip">价值输出能力</span>
+    <span class="chip">透明报价能力</span>
+    <span class="chip">共情锁客能力</span>
+  </div>
+
+  <div class="grid g2">
+    <div class="tile m1"><span class="t-no">✓</span><h4>要什么</h4>
+      <p>追求<b>高见客质量、高转化率、高质量签单</b>；不靠数量堆业绩，靠专业、效率、质量提业绩。</p></div>
+    <div class="tile m1" style="border-top-color:#c0392b"><span class="t-no" style="background:var(--warn-l);color:var(--warn)">✕</span><h4>杜绝什么</h4>
+      <p>杜绝无主张、无专业、无气场的被动谈单；杜绝被客户牵着走、低价烂单、丢优质客户的问题。</p></div>
+  </div>
+</section>
+
+<section id="m1-delivery">
+  <div class="sec-head">
+    <span class="eyebrow">1.4 战略支柱三</span>
+    <h2>交付战略：全流程高效协同、快速交付、精准交付</h2>
+    <p class="lead">小而美企业的核心竞争力，除了前端专业，更靠后端极致高效的交付。</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 270" role="img" aria-label="全流程交付闭环示意图">
+      <text x="450" y="30" text-anchor="middle" font-size="14.5" font-weight="700" fill="#25537d">全流程闭环：环环相扣，事事有人管</text>
+      <g font-size="13" font-weight="600">
+        <rect x="24" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="76" y="101" text-anchor="middle" fill="#1d4265">设计</text>
+        <rect x="140" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="192" y="101" text-anchor="middle" fill="#1d4265">下单</text>
+        <rect x="256" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="308" y="101" text-anchor="middle" fill="#1d4265">材料</text>
+        <rect x="372" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="424" y="101" text-anchor="middle" fill="#1d4265">供应链</text>
+        <rect x="488" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="540" y="101" text-anchor="middle" fill="#1d4265">定制</text>
+        <rect x="604" y="66" width="104" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="656" y="101" text-anchor="middle" fill="#1d4265">施工</text>
+        <rect x="720" y="66" width="86" height="58" rx="11" fill="#eef5fb" stroke="#bfd6e8"/><text x="763" y="101" text-anchor="middle" fill="#1d4265">对接</text>
+        <rect x="818" y="66" width="82" height="58" rx="11" fill="#fbf4e4" stroke="#e8d6a8"/><text x="859" y="101" text-anchor="middle" fill="#b1802a">售后</text>
+      </g>
+      <g fill="#8fb4d1">
+        <path d="M130 91 L142 95 L130 99 Z"/><path d="M246 91 L258 95 L246 99 Z"/><path d="M362 91 L374 95 L362 99 Z"/>
+        <path d="M478 91 L490 95 L478 99 Z"/><path d="M594 91 L606 95 L594 99 Z"/><path d="M710 91 L722 95 L710 99 Z"/><path d="M808 91 L820 95 L808 99 Z"/>
+      </g>
+      <path d="M859 138 C859 196 76 196 76 138" fill="none" stroke="#c8b06a" stroke-width="2" stroke-dasharray="6 5"/>
+      <text x="450" y="216" text-anchor="middle" font-size="12.5" fill="#9a7c3c">闭环管理 · 全程可追溯 · 反馈持续优化</text>
+      <text x="450" y="246" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4265">衔接默契 · 响应快速 · 下单准确 · 供货及时 · 工期可控 · 交付标准统一</text>
+    </svg>
+    <div class="fig-cap"><b>图 4</b> 交付战略 —— 打通设计到售后的全流程闭环，用交付拉开与同行的差距</div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ct">强化统筹指挥能力</span>
+    强化工程部、综合支持专员的统筹指挥能力：做到内部<b>事事有人管、件件有着落、环环相扣、高效协同</b>。用短工期、高品质、零差错、高透明的交付，彻底拉开与同行的差距。
+  </div>
+</section>
+
+<section id="m1-bottom">
+  <div class="sec-head">
+    <span class="eyebrow">1.5 战略支柱四</span>
+    <h2>经营底线：标准化、透明化、控优惠、保利润</h2>
+    <p class="lead">未来经营唯一王道：<b>赚钱才是硬道理。</b></p>
+  </div>
+
+  <div class="grid g2">
+    <div class="tile m1"><span class="t-no">✓</span><h4>签单全部标准化</h4>
+      <ul class="clean ck">
+        <li>全部电子合同</li>
+        <li>全部项目讲透</li>
+        <li>全部费用明示</li>
+        <li>全部边界清晰</li>
+      </ul>
+    </div>
+    <div class="tile m1" style="border-top-color:#c0392b"><span class="t-no" style="background:var(--warn-l);color:var(--warn)">✕</span><h4>严格控制的三种行为</h4>
+      <ul class="clean x">
+        <li>随意优惠</li>
+        <li>无序降价</li>
+        <li>无底线让利</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">守住四条价值底线</span>
+    坚决守住 <b>专业价值、产品价值、服务价值、利润底线</b>。不靠低价抢市场，靠专业、透明、品质、口碑、交付赢市场。
+  </div>
+
+  <h3>模块一 · 一句话总结</h3>
+  <div class="card" style="background:linear-gradient(135deg,#f4f8fc,#eaf2f9);border-color:#d5e5f2">
+    <ul class="clean">
+      <li>放弃规模扩张，聚焦<b>小而美高质量经营</b>；</li>
+      <li>严控成本费用、淘汰无效人力；</li>
+      <li>深耕中高端整装、只签高价值无纠纷的单；</li>
+      <li>强化团队专业、提升转单效率；</li>
+      <li>打通高效交付闭环、坚持<b>透明预算到结算</b>；</li>
+      <li>以专业赢信任、以品质赢口碑、以精细赢利润，实现企业稳健、健康、长久盈利发展。</li>
+    </ul>
+  </div>
+</section>
+
+<section id="m2">
+  <div class="mod-band m2-bg">
+    <div class="kicker">MODULE 02 · 管理层</div>
+    <h2>家装顾问的管理与培训</h2>
+    <p>各片区各整装馆总经理亲自挂帅、亲自指挥、亲自参与日常管理。每周会议、考评、培训、训练、对单，全部与家装顾问的带单挂钩。</p>
+  </div>
+</section>
+
+<section id="m2-manage">
+  <div class="sec-head">
+    <span class="eyebrow">2.1 如何管理</span>
+    <h2>不靠自觉、不靠嘴说：五靠 + 四留痕</h2>
+    <p class="lead">让家装顾问真正付出行动，非常重要。<b>不要靠人的自觉，不能简单地靠嘴说</b>——要全部靠制度、靠表格、靠痕迹、靠监督、靠奖惩。</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 200" role="img" aria-label="管理五靠示意图">
+      <text x="450" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#1c8262">管理“五靠” —— 把行动变成可追踪的事实</text>
+      <g font-size="16" font-weight="700">
+        <rect x="34" y="62" width="150" height="76" rx="14" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.5"/><text x="109" y="108" text-anchor="middle" fill="#12664c">靠制度</text>
+        <rect x="204" y="62" width="150" height="76" rx="14" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.5"/><text x="279" y="108" text-anchor="middle" fill="#12664c">靠表格</text>
+        <rect x="374" y="62" width="150" height="76" rx="14" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.5"/><text x="449" y="108" text-anchor="middle" fill="#12664c">靠痕迹</text>
+        <rect x="544" y="62" width="150" height="76" rx="14" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.5"/><text x="619" y="108" text-anchor="middle" fill="#12664c">靠监督</text>
+        <rect x="714" y="62" width="152" height="76" rx="14" fill="#fbf4e4" stroke="#e8d6a8" stroke-width="1.5"/><text x="790" y="108" text-anchor="middle" fill="#b1802a">靠奖惩</text>
+      </g>
+      <text x="450" y="176" text-anchor="middle" font-size="12.5" fill="#5b7a95">持续行动 + 真实发生 = 结果一定会非常棒</text>
+    </svg>
+    <div class="fig-cap"><b>图 5</b> 管理五靠 —— 用机制替代自觉，用痕迹验证行动</div>
+  </div>
+
+  <h3>四个“每一次”必须留痕、必须真实落地</h3>
+  <div class="grid g4">
+    <div class="tile m2"><span class="t-no">1</span><h4>每一个蹲点、摆点、工地营销</h4><p>全部留痕，有记录、有痕迹、可核查。</p></div>
+    <div class="tile m2"><span class="t-no">2</span><h4>每一次中介拜访</h4><p>都要深入，都要有固定的动作，不能走过场。</p></div>
+    <div class="tile m2"><span class="t-no">3</span><h4>每一次物业对接</h4><p>必须检查沟通结果，不止于“打过电话”。</p></div>
+    <div class="tile m2"><span class="t-no">4</span><h4>每一次走访售楼代表</h4><p>必须要刷存在感，让对方记住我们、认得我们。</p></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ct">管理逻辑</span>
+    全部都要<b>真实落地、全过程管控</b>。如果保持持续行动，且真实发生，结果一定会非常棒！
+  </div>
+</section>
+
+<section id="m2-train">
+  <div class="sec-head">
+    <span class="eyebrow">2.2 如何培训</span>
+    <h2>顾问培训体系：五库一标准</h2>
+    <p class="lead">家装顾问每天跑楼盘、跑中介跑得很累，但<b>不会聊、不会跟、不会邀、不会锁客</b>——动作做了，却不会转化，等于白跑。</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 290" role="img" aria-label="家装顾问培训体系构成图">
+      <text x="450" y="30" text-anchor="middle" font-size="15" font-weight="700" fill="#1c8262">一套成型的培训体系：把“会跑”升级为“会转化”</text>
+      <g font-weight="700">
+        <rect x="30" y="56" width="160" height="72" rx="12" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.4"/>
+        <text x="110" y="88" text-anchor="middle" fill="#12664c" font-size="15">素材库</text>
+        <text x="110" y="110" text-anchor="middle" fill="#4d8b74" font-size="11.5" font-weight="400">有话可说</text>
+        <rect x="204" y="56" width="160" height="72" rx="12" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.4"/>
+        <text x="284" y="88" text-anchor="middle" fill="#12664c" font-size="15">话术库</text>
+        <text x="284" y="110" text-anchor="middle" fill="#4d8b74" font-size="11.5" font-weight="400">张口就来</text>
+        <rect x="378" y="56" width="160" height="72" rx="12" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.4"/>
+        <text x="458" y="88" text-anchor="middle" fill="#12664c" font-size="15">跟单流程</text>
+        <text x="458" y="110" text-anchor="middle" fill="#4d8b74" font-size="11.5" font-weight="400">节奏不乱</text>
+        <rect x="552" y="56" width="160" height="72" rx="12" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.4"/>
+        <text x="632" y="88" text-anchor="middle" fill="#12664c" font-size="15">邀客逻辑</text>
+        <text x="632" y="110" text-anchor="middle" fill="#4d8b74" font-size="11.5" font-weight="400">邀约稳定</text>
+        <rect x="726" y="56" width="146" height="72" rx="12" fill="#fbf4e4" stroke="#e8d6a8" stroke-width="1.4"/>
+        <text x="799" y="88" text-anchor="middle" fill="#b1802a" font-size="15">成交思维</text>
+        <text x="799" y="110" text-anchor="middle" fill="#9a7c3c" font-size="11.5" font-weight="400">锁定转化</text>
+      </g>
+      <rect x="30" y="156" width="842" height="116" rx="14" fill="#f7fafd" stroke="#dbe6f0" stroke-width="1.4"/>
+      <text x="56" y="186" font-size="13.5" font-weight="700" fill="#1d4265">全员必须达到的“一标准”——张口就来、秒答不乱：</text>
+      <g font-size="12.6" fill="#3c5a72">
+        <text x="56" y="214">公司介绍张口就来</text>
+        <text x="240" y="214">品牌材料张口就来</text>
+        <text x="424" y="214">施工工艺张口就来</text>
+        <text x="608" y="214">风格案例张口就来</text>
+        <text x="790" y="214">客户问题秒答</text>
+        <text x="56" y="242">跟单节奏不乱</text>
+        <text x="240" y="242">邀约进店稳定</text>
+        <text x="424" y="242" font-weight="700" fill="#1c8262">拉开业绩差距的是：素材储备 · 话术 · 跟单 · 邀客 · 锁客</text>
+      </g>
+    </svg>
+    <div class="fig-cap"><b>图 6</b> 培训体系 —— 五库打底，一个标准落地</div>
+  </div>
+
+  <h3>公司统一提供的手机素材库（6 类）</h3>
+  <div class="grid g3">
+    <div class="tile m2"><span class="t-no">1</span><h4>公司实力 / 展厅视频</h4><p>建立第一印象，快速证明企业实力。</p></div>
+    <div class="tile m2"><span class="t-no">2</span><h4>各风格完工实景图</h4><p>让客户看到真实落地效果。</p></div>
+    <div class="tile m2"><span class="t-no">3</span><h4>小区本楼盘在建工地实拍</h4><p>同小区案例最有说服力。</p></div>
+    <div class="tile m2"><span class="t-no">4</span><h4>工艺细节图 / 材料细节图</h4><p>用细节体现专业与品质。</p></div>
+    <div class="tile m2"><span class="t-no">5</span><h4>业主好评 / 完工案例</h4><p>用口碑建立信任感。</p></div>
+    <div class="tile m2"><span class="t-no">6</span><h4>最新活动政策海报</h4><p>提供合规、统一的对外口径。</p></div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ct">内容原则</span>
+    不发广告、不硬推、不骚扰，<b>只输出价值</b>：工地实景、完工案例、户型优化、装修避坑、材料知识。
+  </div>
+  <div class="callout info">
+    <span class="ct">团队动作</span>
+    策划部已收集整理大量素材，请带领团队进行消化，成为自己可用的内容和话术；并整理一整套<b>攻打经纪人的素材库</b>。
+  </div>
+</section>
+
+<section id="m2-channel">
+  <div class="sec-head">
+    <span class="eyebrow">2.3 实战案例</span>
+    <h2>针对中介渠道的攻打方法</h2>
+    <p class="lead">整装单值大、佣金多、及时给，企业口碑为底层基础。中介（房产经纪人、店东）本质是<b>商业合作</b>：人情为辅，利益优先，安全感是前提。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">经纪人最怕两件事</span>
+    ① 推荐客户过去装企<b>乱增项、投诉扯皮</b>，自己背锅，损耗在业主心中的信誉；<br>
+    ② <b>佣金拖、扣、各种条件</b>，干完拿不到钱。
+  </div>
+
+  <div class="grid g2">
+    <div class="tile m2"><span class="t-no">优</span><h4>我们的优势</h4>
+      <p>整装单值高（普遍 18–22 万）· 4% 佣金总额可观 · 口碑好 · 佣金非常快。<br>要把这几个优势转化成经纪人的<b>信任感与持续转介绍动力</b>。</p></div>
+    <div class="tile m2"><span class="t-no">分</span><h4>两类关键角色，两套打法</h4>
+      <p><b>店东 / 门店老板</b>：掌控门店规则、管理全部经纪人；<br><b>一线经纪人</b>：真正出力获客的人。两者诉求不同，打法也不一样。</p></div>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 470" role="img" aria-label="店东与一线经纪人双角色打法对比图">
+      <rect x="30" y="20" width="840" height="52" rx="13" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.5"/>
+      <text x="450" y="52" text-anchor="middle" font-size="14.5" font-weight="700" fill="#12664c">核心逻辑：利益是基础 · 信任是核心 · 口碑是生命线</text>
+
+      <rect x="30" y="92" width="404" height="356" rx="15" fill="#f5fbf8" stroke="#a9dcc9" stroke-width="1.6"/>
+      <path d="M30 107 A15 15 0 0 1 45 92 L419 92 A15 15 0 0 1 434 107 L434 138 L30 138 Z" fill="#1c8262"/>
+      <text x="232" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">① 优先搞定 · 店东 / 门店老板</text>
+      <text x="56" y="164" font-size="12.7" fill="#3c5a72"><tspan font-weight="700" fill="#12664c">他决定：</tspan>允不允许家装合作、能否摆放资料、内部是否宣导</text>
+      <text x="56" y="192" font-size="12.7" font-weight="700" fill="#12664c">沟通要点（初次拜访不讲佣金，先讲风险保障）：</text>
+      <g font-size="12.4" fill="#3c5a72">
+        <text x="56" y="220">1. 我们是本地老牌整装公司，最看重口碑，</text>
+        <text x="70" y="240">最怕给中介添麻烦，坚决规避工地扯皮。</text>
+        <text x="56" y="266">2. 整装单值普遍 18–22 万，佣金点位 4%，</text>
+        <text x="70" y="286">一单很可观；最重要：佣金一次付全额。</text>
+        <text x="56" y="312">3. 对中介推送客户有专属对接人，全程闭环，</text>
+        <text x="70" y="332">不让经纪人夹在业主和装修公司中间处理纠纷。</text>
+        <text x="56" y="358">4. 门店所有经纪人都可推客户，成交就拿佣金，</text>
+        <text x="70" y="378">不要经纪人开发票。</text>
+      </g>
+      <rect x="46" y="398" width="372" height="36" rx="9" fill="#e6f5ef"/>
+      <text x="232" y="421" text-anchor="middle" font-size="12.5" fill="#12664c">他关心：会不会惹投诉 + 佣金能否兑现</text>
+
+      <rect x="466" y="92" width="404" height="356" rx="15" fill="#fdf9f3" stroke="#e8d6a8" stroke-width="1.6"/>
+      <path d="M466 107 A15 15 0 0 1 481 92 L855 92 A15 15 0 0 1 870 107 L870 138 L466 138 Z" fill="#bf6a2c"/>
+      <text x="668" y="122" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">② 对接 · 一线经纪人</text>
+      <text x="492" y="164" font-size="12.7" fill="#3c5a72"><tspan font-weight="700" fill="#9c5520">他关心：</tspan>到手多少钱、流程简不简单、回款快不快、会不会惹麻烦</text>
+      <text x="492" y="192" font-size="12.7" font-weight="700" fill="#9c5520">三个落地动作：</text>
+      <g font-size="12.4" fill="#3c5a72">
+        <text x="492" y="220">1）<tspan font-weight="700" fill="#9c5520">线下上门</tspan>：带资料（整装手册、公司介绍），</text>
+        <text x="506" y="240">跟在岗经纪人多交流。</text>
+        <text x="492" y="266">2）<tspan font-weight="700" fill="#9c5520">多频次拜访</tspan>：不要一次谈完就消失，送一点</text>
+        <text x="506" y="286">小物料（不搞重送礼，合规优先），多到店刷脸。</text>
+        <text x="492" y="312">3）<tspan font-weight="700" fill="#9c5520">算实实在在的账</tspan>：一套 20 万整装，</text>
+        <text x="506" y="332">4% 就是 <tspan font-weight="700" fill="#c0392b">8000 元佣金</tspan>，比很多小装企更有诱惑力。</text>
+      </g>
+      <rect x="482" y="352" width="372" height="36" rx="9" fill="#fbeee2"/>
+      <text x="668" y="375" text-anchor="middle" font-size="12.5" fill="#9c5520">痛点：担心佣金、业主投诉、中介两头受气</text>
+      <rect x="482" y="398" width="372" height="36" rx="9" fill="#fbf4e4"/>
+      <text x="668" y="421" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b1802a">核心卖点：结算快、少扯皮</text>
+    </svg>
+    <div class="fig-cap"><b>图 7</b> 中介渠道双角色打法 —— 对店东讲规则与风险保障，对经纪人讲收益与佣金及时</div>
+  </div>
+</section>
+
+<section id="m2-quote">
+  <div class="sec-head">
+    <span class="eyebrow">2.4 团队执行</span>
+    <h2>执行金句与家装顾问特质</h2>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">中介渠道 · 团队执行金句</span>
+    利益是基础，信任是核心，口碑是生命线。<br>
+    对店东讲规则、讲风险保障；对经纪人讲收益、讲佣金及时。<br>
+    报备留痕，佣金守诺，<b>不把装修纠纷转嫁中介</b>。<br>
+    优先深耕优质门店，不求数量多，只求合作质量高。
+  </div>
+
+  <h3>家装顾问特质：三种底色</h3>
+  <div class="figure">
+    <svg viewBox="0 0 900 210" role="img" aria-label="家装顾问三大特质示意图">
+      <rect x="40" y="34" width="256" height="146" rx="16" fill="#eef5fb" stroke="#bfd6e8" stroke-width="1.6"/>
+      <circle cx="168" cy="76" r="24" fill="#25537d"/>
+      <text x="168" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">韧</text>
+      <text x="168" y="126" text-anchor="middle" font-size="15.5" font-weight="700" fill="#1d4265">内心强大</text>
+      <text x="168" y="152" text-anchor="middle" font-size="12.8" fill="#4a6076">不怕拒绝，拥有韧性</text>
+
+      <rect x="322" y="34" width="256" height="146" rx="16" fill="#fdf9f3" stroke="#e8d6a8" stroke-width="1.6"/>
+      <circle cx="450" cy="76" r="24" fill="#bf6a2c"/>
+      <text x="450" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">情</text>
+      <text x="450" y="126" text-anchor="middle" font-size="15.5" font-weight="700" fill="#7d4a1c">情商在线</text>
+      <text x="450" y="152" text-anchor="middle" font-size="12.8" fill="#6d5236">利他沟通，真诚共情</text>
+
+      <rect x="604" y="34" width="256" height="146" rx="16" fill="#f5f0fb" stroke="#d5c2ea" stroke-width="1.6"/>
+      <circle cx="732" cy="76" r="24" fill="#7a4fb0"/>
+      <text x="732" y="84" text-anchor="middle" font-size="18" font-weight="700" fill="#ffffff">专</text>
+      <text x="732" y="126" text-anchor="middle" font-size="15.5" font-weight="700" fill="#5a3a85">目标感强</text>
+      <text x="732" y="152" text-anchor="middle" font-size="12.8" fill="#6b5b85">功底扎实，专业过硬</text>
+    </svg>
+    <div class="fig-cap"><b>图 8</b> 家装顾问三大特质 —— 韧、情、专</div>
+  </div>
+</section>
+
+<section id="m3">
+  <div class="mod-band m3-bg">
+    <div class="kicker">MODULE 03 · 执行层</div>
+    <h2>跟单方法及要求</h2>
+    <p>家装跟单核心思路：紧盯不放，穷追猛打，但价值先行！频次跟得上、动作不断档、价值持续给、节点抓得住，客户不回复也绝不停止。</p>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">美平精神 · 四条跟单铁律</span>
+    ① 客户可以犹豫，我们不能放弃；客户可以沉默，我们不能失联。<br>
+    ② 跟单拼的就是韧性，穷追猛打靠价值，不靠骚扰。<br>
+    ③ 很多单不是谈出来的，是死死跟出来的；你松懈一刻，对手就抢占机会。<br>
+    ④ 只要客户没有明确放弃装修，就要咬住不放，持续输出价值，等待成交窗口。
+  </div>
+
+  <h3>三种客户状态，三条跟单路线</h3>
+  <div class="figure">
+    <svg viewBox="0 0 900 420" role="img" aria-label="跟单三种情况分支图">
+      <rect x="330" y="18" width="240" height="56" rx="14" fill="#9c5520"/>
+      <text x="450" y="52" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">客户当前处于哪个阶段？</text>
+      <path d="M450 74 L450 100" stroke="#d9c3ac" stroke-width="2" fill="none"/>
+      <path d="M160 100 L740 100" stroke="#d9c3ac" stroke-width="2" fill="none"/>
+      <path d="M160 100 L160 122" stroke="#d9c3ac" stroke-width="2" fill="none"/>
+      <path d="M450 100 L450 122" stroke="#d9c3ac" stroke-width="2" fill="none"/>
+      <path d="M740 100 L740 122" stroke="#d9c3ac" stroke-width="2" fill="none"/>
+
+      <rect x="30" y="122" width="262" height="278" rx="15" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.6"/>
+      <path d="M30 137 A15 15 0 0 1 45 122 L277 122 A15 15 0 0 1 292 137 L292 164 L30 164 Z" fill="#bf6a2c"/>
+      <text x="161" y="150" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">情况一 · 已加微信，未到店</text>
+      <text x="52" y="192" font-size="12.6" font-weight="700" fill="#9c5520">目标</text>
+      <text x="52" y="214" font-size="13" fill="#4a6076">让客户主动赴约、走进门店</text>
+      <text x="52" y="248" font-size="12.6" font-weight="700" fill="#9c5520">核心逻辑</text>
+      <text x="52" y="270" font-size="13" fill="#4a6076">不靠低价、不靠单纯优惠，</text>
+      <text x="52" y="290" font-size="13" fill="#4a6076">靠建立信任、输出专业价值</text>
+      <text x="52" y="324" font-size="12.6" font-weight="700" fill="#9c5520">关键动作</text>
+      <text x="52" y="346" font-size="13" fill="#4a6076">户型针对性分析 · 企业价值输出</text>
+      <text x="52" y="366" font-size="13" fill="#4a6076">避坑干货 · 方案/案例/工艺邀约</text>
+
+      <rect x="319" y="122" width="262" height="278" rx="15" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.6"/>
+      <path d="M319 137 A15 15 0 0 1 334 122 L566 122 A15 15 0 0 1 581 137 L581 164 L319 164 Z" fill="#bf6a2c"/>
+      <text x="450" y="150" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">情况二 · 已报价，外出比价</text>
+      <text x="341" y="192" font-size="12.6" font-weight="700" fill="#9c5520">目标</text>
+      <text x="341" y="214" font-size="13" fill="#4a6076">争取二次回店面谈</text>
+      <text x="341" y="248" font-size="12.6" font-weight="700" fill="#9c5520">核心逻辑</text>
+      <text x="341" y="270" font-size="13" fill="#4a6076">不纠缠价格、不主动降价，</text>
+      <text x="341" y="290" font-size="13" fill="#4a6076">不断强化价值差异、风险差异</text>
+      <text x="341" y="324" font-size="12.6" font-weight="700" fill="#9c5520">关键动作</text>
+      <text x="341" y="346" font-size="13" fill="#4a6076">复盘方案初衷 · 交付工地风险提示</text>
+      <text x="341" y="366" font-size="13" fill="#4a6076">预判顾虑 · 同小区案例 · 二次邀约</text>
+
+      <rect x="608" y="122" width="262" height="278" rx="15" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.6"/>
+      <path d="M608 137 A15 15 0 0 1 623 122 L855 122 A15 15 0 0 1 870 137 L870 164 L608 164 Z" fill="#bf6a2c"/>
+      <text x="739" y="150" text-anchor="middle" font-size="13.5" font-weight="700" fill="#ffffff">情况三 · 认可但仍要再考虑</text>
+      <text x="630" y="192" font-size="12.6" font-weight="700" fill="#9c5520">目标</text>
+      <text x="630" y="214" font-size="13" fill="#4a6076">现场锁定，完成签约转化</text>
+      <text x="630" y="248" font-size="12.6" font-weight="700" fill="#9c5520">核心逻辑</text>
+      <text x="630" y="270" font-size="13" fill="#4a6076">不搞低价逼单，用价值、风险、</text>
+      <text x="630" y="290" font-size="13" fill="#4a6076">时机、确定性促成签约</text>
+      <text x="630" y="324" font-size="12.6" font-weight="700" fill="#9c5520">关键动作</text>
+      <text x="630" y="346" font-size="13" fill="#4a6076">资源＋合同兜底 · 锁定权益有效期</text>
+      <text x="630" y="366" font-size="13" fill="#4a6076">管理人员及时补位，踢好临门一脚</text>
+    </svg>
+    <div class="fig-cap"><b>图 9</b> 跟单三情况 —— 不同阶段，目标与动作完全不同</div>
+  </div>
+</section>
+
+<section id="m3-case1">
+  <div class="sec-head">
+    <span class="eyebrow">3.1 情况一</span>
+    <h2>已加微信、未到店 —— 如何邀客进店</h2>
+    <p class="lead">客户本身有需求、已有微信，但迟迟不到店。核心不是给多大折扣，而是让客户觉得<b>来一趟有收获、有价值、不虚此行</b>，相信我们专业靠谱，而不是过来被推销套路。</p>
+  </div>
+
+  <h3>一、邀约人员需要具备的能力与准备</h3>
+  <div class="grid g3">
+    <div class="tile m3"><span class="t-no">1</span><h4>资料提前备齐</h4>
+      <p>提前拿到客户户型图，熟悉户型痛点；吃透公司优势：工地交付标准、工艺亮点、真实完工案例、效果图、老客户好评、在建工地实拍。清楚产品体系，<b>不夸大、不忽悠</b>。</p></div>
+    <div class="tile m3"><span class="t-no">2</span><h4>心态素质</h4>
+      <p>不急于逼单，不频繁轰炸消息；学会换位思考，听懂客户顾虑；沟通真诚务实，多站在业主装修难点角度说话，体现专业，而不是一味推销。</p></div>
+    <div class="tile m3"><span class="t-no">3</span><h4>话术素养</h4>
+      <p>少讲大话、不大包大揽、少讲优惠；多讲解决方案、避坑经验、真实案例；懂得挖掘客户的装修担忧：怕工期乱、怕工地差、怕增项、怕踩坑。</p></div>
+  </div>
+
+  <h3>二、微信沟通核心内容（价值输出，建立信任）</h3>
+  <div class="steps">
+    <div class="step"><div class="ball">1</div><div class="bd">
+      <h4>户型针对性分析</h4>
+      <p>拿到户型后，针对他家户型指出优缺点、空间改造思路、收纳怎么做、采光如何优化，给到初步思路建议，让客户感受到<b>你是懂他家房子的</b>，不是通用套话。</p>
+      <div class="script">看了你家这个户型，最大问题是 XX，很多业主在这里容易踩坑，我整理了几个实用改造思路，可以到店结合户型图跟你细细拆解。</div>
+    </div></div>
+    <div class="step"><div class="ball">2</div><div class="bd">
+      <h4>输出企业价值，建立靠谱认知</h4>
+      <p>微信适当分享真实在建工地、完工实景、工地管控标准、交付案例、老客户反馈；讲我们重视工地交付、严控品质、减少增项的做事理念，让客户感知企业实力和做事态度。</p>
+    </div></div>
+    <div class="step"><div class="ball">3</div><div class="bd">
+      <h4>效果图与方案价值引导</h4>
+      <p>线上只做初步思路，<b>不要完整出全套效果图</b>。说明完整方案需要结合户型、现场尺寸、生活习惯，当面沟通才能出贴合他家的效果图与布局方案。</p>
+    </div></div>
+    <div class="step"><div class="ball">4</div><div class="bd">
+      <h4>装修避坑干货输出</h4>
+      <p>分享行业常见坑点：增项陷阱、材料以次充好、工期拖延、工地管理混乱。客观讲行业问题，侧面体现我们的管控优势，客户会觉得你实在、值得信任。</p>
+    </div></div>
+  </div>
+
+  <h3>三、到店邀约手段：不靠低价优惠</h3>
+  <div class="grid g2">
+    <div class="tile m3"><span class="t-no">A</span><h4>方案驱动邀约</h4>
+      <div class="script">针对你家户型，我们设计师梳理了两套初步布局思路，有些想法线上文字讲不清楚，欢迎抽空到店，面对面把户型改造、收纳布局完整过一遍，也可以看同户型落地的实景案例。</div></div>
+    <div class="tile m3"><span class="t-no">B</span><h4>案例 + 工艺驱动邀约</h4>
+      <div class="script">我们有好几套和你家同小区同户型已经完工和在建的工地，店里有完整实景照片、工艺样板，过来可以直观看看实际落地效果，也可以了解我们整套施工交付标准。</div></div>
+    <div class="tile m3"><span class="t-no">C</span><h4>专家咨询驱动邀约</h4>
+      <div class="script">装修前期很多细节考虑不到，很容易后期返工。你可以过来，设计师帮你做一次完整装修梳理，聊聊你的居住需求，帮你避开装修里面很多隐形问题。</div></div>
+    <div class="tile m3"><span class="t-no">D</span><h4>工地可视化体验邀约</h4>
+      <div class="script">店里有工艺样板间，水电、瓦工、木工各个工序都有实物展示，线上看图片感受有限，到店可以直观看到我们实际怎么做工地。</div></div>
+  </div>
+
+  <h3>四、要避开的坑</h3>
+  <div class="callout warn">
+    <span class="ct">绝对不要</span>
+    ✕ 不要：“到店给你低价、给特大优惠”<br>
+    ✕ 不要：频繁发活动轰炸、反复催什么时候过来<br>
+    ✓ 要：让客户认知——<b>来店是获取专业方案、看真实落地案例、了解工艺、避坑，不是单纯过来领福利。</b>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">五、完整逻辑总结</span>
+    微信阶段核心目标<b>不是谈签单</b>，是输出专业价值，解决客户心里顾虑，建立信任感。让客户内心形成判断：这家公司靠谱专业，我过去一趟能够拿到对自己装修有用的东西，才愿意主动赴约。
+  </div>
+</section>
+
+<section id="m3-case2">
+  <div class="sec-head">
+    <span class="eyebrow">3.2 情况二</span>
+    <h2>已到店、已报价，客户说回去考虑（实质外出比价）</h2>
+    <p class="lead">客户拿着我们的方案到处比价，别家最常用的手段就是报低价抢单。我们跟单的目标，是不断强化<b>价值差异、风险差异</b>，唤醒客户的顾虑，让他愿意二次回店，而不是被低价带走。</p>
+  </div>
+
+  <div class="callout warn">
+    <span class="ct">现状与误区</span>
+    一味催单、反复问结果，只会把客户推远；一味降价会拉低毛利，也不是长久做法。
+  </div>
+
+  <h3>一、跟单人员的能力与心态准备</h3>
+  <div class="grid g2">
+    <div class="tile m3"><span class="t-no">1</span><h4>信息要记得住</h4><p>清楚记住：客户户型、需求、我们的方案、报价构成、客户当时纠结点，<b>记得客户家里谁做主</b>（夫妻、父母）。</p></div>
+    <div class="tile m3"><span class="t-no">2</span><h4>心态要摆正</h4><p>接受客户比价是正常行为，不要抵触、不要吐槽别的装修公司，<b>不贬低对手</b>，只讲客观差异和风险。</p></div>
+    <div class="tile m3"><span class="t-no">3</span><h4>拒绝高频轰炸</h4><p>不要天天发“考虑好了吗”，每次沟通都要有实质内容，不发空洞问候。</p></div>
+    <div class="tile m3"><span class="t-no">4</span><h4>目标要清醒</h4><p>目标不是微信直接成交，目标是<b>争取二次回店面谈</b>——线上很难扭转比价心态。</p></div>
+  </div>
+
+  <h3>二、微信持续输出的四类内容</h3>
+  <div class="steps">
+    <div class="step"><div class="ball">1</div><div class="bd">
+      <h4>复盘当初做方案的初衷，强化方案匹配度</h4>
+      <p>提醒他这个方案是结合他家居住习惯、家庭成员、户型痛点做出来的，不是通用说法。</p>
+      <div class="script">上次跟您沟通，家里老人小孩居住，所以在收纳、安全、动线上面做了专门的设计。您在对比的时候，可以重点看各家是不是真正贴合您家的实际需求，不要只看总价数字。</div>
+      <p class="muted">目的：让客户明白，价格背后是方案，不同方案总价天然不一样，不能单纯比数字。</p>
+    </div></div>
+    <div class="step"><div class="ball">2</div><div class="bd">
+      <h4>输出交付、工地、风险提示（核心杀手锏）</h4>
+      <p>客户比价最容易只看报价，忽略后期增项、工艺、工地管理、售后。我们客观讲行业常见风险，<b>不点名哪家公司</b>。发送素材：在建工地实拍、完工实景、施工工艺标准、增项管控说明、老客户真实反馈。</p>
+      <div class="script">装修报价很容易表面看起来便宜，后期施工阶段拆改、水电、辅料、项目漏项陆续加钱。您对比的时候可以重点核对项目清单，哪些包含、哪些不包含，避免前期低价，后期不断加价。</div>
+    </div></div>
+    <div class="step"><div class="ball">3</div><div class="bd">
+      <h4>解答潜在疑问，主动预判顾虑</h4>
+      <p>回想当时到店沟通，客户当时犹豫点是什么：是预算？材料？工期？还是担心工地做不好？主动把顾虑抛出来沟通。</p>
+      <div class="script">回想上次沟通，您当时也比较担心工地交付和工期把控，这块也是我们重点管控的地方，我发几个我们近期同户型的工地给您参考。</div>
+    </div></div>
+    <div class="step"><div class="ball">4</div><div class="bd">
+      <h4>适度分享老客户案例、同小区落地案例</h4>
+      <p>用真实案例建立信任感，证明我们不是纸上谈兵，很多同小区业主最终选择我们，看实际落地效果。</p>
+    </div></div>
+  </div>
+
+  <h3>三、创造理由，邀约二次回店（关键：不要线上博弈价格）</h3>
+  <div class="grid g3">
+    <div class="tile m3"><span class="t-no">A</span><h4>方案核对邀约</h4>
+      <div class="script">您外面对比一圈之后，肯定会有一些疑问，各家方案项目不一样，光看报价容易看糊涂。方便抽空再来店里一趟，我们一起把各家的项目清单捋一遍，帮您分辨哪些是包含、哪些是后期要加的，帮您避坑。</div></div>
+    <div class="tile m3"><span class="t-no">B</span><h4>优化微调方案邀约</h4>
+      <div class="script">您对比过程中，如果有新想法，或者家里人有不同意见，可以回来，我们可以针对您的需求，再把方案局部优化调整一下。</div></div>
+    <div class="tile m3"><span class="t-no">C</span><h4>看实体工艺 / 材料样板邀约</h4>
+      <div class="script">很多材料线上看报价单看不出差别，有空可以再过来，现场看材料样板、工艺样板，直观对比，心里更踏实。</div></div>
+  </div>
+
+  <h3>四、跟单节奏：防止骚扰，同时不掉链</h3>
+  <div class="figure">
+    <svg viewBox="0 0 940 300" role="img" aria-label="跟单节奏时间轴">
+      <line x1="60" y1="152" x2="900" y2="152" stroke="#e2cdb5" stroke-width="3"/>
+      <circle cx="125" cy="152" r="9" fill="#bf6a2c" stroke="#fff" stroke-width="3"/>
+      <rect x="20" y="28" width="212" height="100" rx="12" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.4"/>
+      <text x="126" y="54" text-anchor="middle" font-size="13.4" font-weight="700" fill="#9c5520">离店当天 ~ 第 2 天</text>
+      <text x="126" y="79" text-anchor="middle" font-size="12.2" fill="#4a6076">回顾方案 + 提醒比价重点</text>
+      <text x="126" y="100" text-anchor="middle" font-size="12.2" fill="#4a6076">输出工地 / 案例素材</text>
+      <text x="126" y="120" text-anchor="middle" font-size="12.2" fill="#c0392b">不逼问结果</text>
+
+      <circle cx="355" cy="152" r="9" fill="#bf6a2c" stroke="#fff" stroke-width="3"/>
+      <rect x="250" y="176" width="212" height="100" rx="12" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.4"/>
+      <text x="356" y="202" text-anchor="middle" font-size="13.4" font-weight="700" fill="#9c5520">第 3 ~ 6 天</text>
+      <text x="356" y="227" text-anchor="middle" font-size="12.2" fill="#4a6076">输出装修避坑点</text>
+      <text x="356" y="248" text-anchor="middle" font-size="12.2" fill="#4a6076">同小区完工案例</text>
+      <text x="356" y="268" text-anchor="middle" font-size="12.2" fill="#1c8262">抛出二次回店邀约</text>
+
+      <circle cx="585" cy="152" r="9" fill="#bf6a2c" stroke="#fff" stroke-width="3"/>
+      <rect x="480" y="28" width="212" height="100" rx="12" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.4"/>
+      <text x="586" y="54" text-anchor="middle" font-size="13.4" font-weight="700" fill="#9c5520">超过一周</text>
+      <text x="586" y="79" text-anchor="middle" font-size="12.2" fill="#4a6076">不要天天发消息</text>
+      <text x="586" y="100" text-anchor="middle" font-size="12.2" fill="#4a6076">隔 2 ~ 3 天输出一条</text>
+      <text x="586" y="120" text-anchor="middle" font-size="12.2" fill="#4a6076">有内容的信息，避免反感</text>
+
+      <circle cx="815" cy="152" r="9" fill="#c0392b" stroke="#fff" stroke-width="3"/>
+      <rect x="710" y="176" width="212" height="100" rx="12" fill="#fdeeec" stroke="#f2c9c3" stroke-width="1.4"/>
+      <text x="816" y="202" text-anchor="middle" font-size="13.4" font-weight="700" fill="#8f2b20">客户说“别家更便宜”</text>
+      <text x="816" y="227" text-anchor="middle" font-size="12.2" fill="#8f2b20">不要马上降价</text>
+      <text x="816" y="248" text-anchor="middle" font-size="12.2" fill="#4a6076">拆解：便宜在哪里？项目少了没？</text>
+      <text x="816" y="268" text-anchor="middle" font-size="12.2" fill="#4a6076">材料等级？后期会不会增项？</text>
+    </svg>
+    <div class="fig-cap"><b>图 10</b> 跟单节奏 —— 频次跟得上，动作不断档</div>
+  </div>
+
+  <h3>五、绝对不能踩的误区</h3>
+  <div class="callout warn">
+    <span class="ct">三大禁区</span>
+    ✕ 不要问：“考虑得怎么样？什么时候定？”<br>
+    ✕ 不要主动：“别人报多少，我们可以比他再低一点”——一旦陷入价格厮杀，很容易丢毛利。<br>
+    ✕ 不要诋毁对手，不要说别家公司不好，只讲装修行业普遍风险。
+  </div>
+  <div class="callout tip">
+    <span class="ct">核心</span>
+    承认客户比价的合理性，把客户的注意力从单纯“比总价”，拉回到<b>比方案完整度、比工艺交付、比风险可控、比落地结果</b>，想方设法促成第二次见面。
+  </div>
+</section>
+
+<section id="m3-case3">
+  <div class="sec-head">
+    <span class="eyebrow">3.3 情况三</span>
+    <h2>方案认可、报价接受、优惠谈妥，客户还要回去再考虑</h2>
+    <p class="lead">前提是：客户方案认可、报价接受、优惠谈妥、工艺材料售后全部讲透，客户心里已经基本认可公司，只是犹豫、想再对比、想再想一想，<b>不是对价格和方案有重大异议</b>。</p>
+  </div>
+
+  <div class="grid g3">
+    <div class="tile m3"><span class="t-no">1</span><h4>习惯性谨慎</h4><p>内心已经认可，只是习惯性谨慎，需要一个合理理由下决心。</p></div>
+    <div class="tile m3"><span class="t-no">2</span><h4>手握对比</h4><p>手上拿着别家对比，在权衡，等待你的砝码。</p></div>
+    <div class="tile m3"><span class="t-no">3</span><h4>决策人不在</h4><p>家里有关键决策人不在现场，自己做不了主。</p></div>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">核心策略</span>
+    不靠降价逼单，靠<b>资源、合同兜底建立确定性</b>；能现场确认就不轻易放走，要放走必须<b>锁死权益有效期</b>，约定下次跟进节点；管理人员及时补位，临门一脚决定转单成败。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 230" role="img" aria-label="情况三锁客四要素示意图">
+      <rect x="250" y="22" width="400" height="58" rx="15" fill="#9c5520"/>
+      <text x="450" y="58" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">用四样东西促成签约，而不是降价</text>
+      <path d="M450 80 L450 104" stroke="#d9c3ac" stroke-width="2"/>
+      <path d="M130 104 L770 104" stroke="#d9c3ac" stroke-width="2"/>
+      <path d="M130 104 L130 126" stroke="#d9c3ac" stroke-width="2"/>
+      <path d="M343 104 L343 126" stroke="#d9c3ac" stroke-width="2"/>
+      <path d="M557 104 L557 126" stroke="#d9c3ac" stroke-width="2"/>
+      <path d="M770 104 L770 126" stroke="#d9c3ac" stroke-width="2"/>
+      <rect x="40" y="126" width="180" height="80" rx="13" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.5"/>
+      <text x="130" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#9c5520">价值</text>
+      <text x="130" y="182" text-anchor="middle" font-size="11.6" fill="#6d5236">专业与交付兑现</text>
+      <rect x="253" y="126" width="180" height="80" rx="13" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.5"/>
+      <text x="343" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#9c5520">风险</text>
+      <text x="343" y="182" text-anchor="middle" font-size="11.6" fill="#6d5236">低价背后的增项风险</text>
+      <rect x="467" y="126" width="180" height="80" rx="13" fill="#fdf9f3" stroke="#e8cda8" stroke-width="1.5"/>
+      <text x="557" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#9c5520">时机</text>
+      <text x="557" y="182" text-anchor="middle" font-size="11.6" fill="#6d5236">档期与政策窗口</text>
+      <rect x="680" y="126" width="180" height="80" rx="13" fill="#fbf4e4" stroke="#e8d6a8" stroke-width="1.5"/>
+      <text x="770" y="158" text-anchor="middle" font-size="15" font-weight="700" fill="#b1802a">确定性</text>
+      <text x="770" y="182" text-anchor="middle" font-size="11.6" fill="#9a7c3c">合同兜底、权益锁定</text>
+    </svg>
+    <div class="fig-cap"><b>图 11</b> 情况三锁客四要素 —— 价值、风险、时机、确定性</div>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">模块三收尾金句</span>
+    穷追猛打，咬住不放，持续输出价值，<b>一直跟到签单成功！</b>
+  </div>
+</section>
+
+<section id="m4">
+  <div class="mod-band m4-bg">
+    <div class="kicker">MODULE 04 · 专业层</div>
+    <h2>设计师培训及谈单方法</h2>
+    <p>签单的关键人物是设计师。设计师的专业度、主见、洞察力、落地能力，直接决定客户质量、签单质量、利润质量以及客户口碑。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">一句话定位</span>
+    真正优秀的家装设计师，绝不是只会画图、做搭配的美工，而是<b>客户居住生活的规划师、全屋落地的专家、家庭空间问题的解决者、高价值信任的建立者</b>。
+  </div>
+</section>
+
+<section id="m4-standard">
+  <div class="sec-head">
+    <span class="eyebrow">4.1 能力标准</span>
+    <h2>优秀设计师的七大核心素养</h2>
+    <p class="lead">专业硬实力 ＋ 生活洞察软实力 ＋ 独立主见气场 ＋ 精准挖需共情 ＋ 透明落地交付 ＋ 高价值高毛利高质量签单。</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 440" role="img" aria-label="设计师能力金字塔">
+      <path d="M345 20 L555 20 L600 92 L300 92 Z" fill="#f5f0fb" stroke="#c3a9e2" stroke-width="1.6"/>
+      <text x="450" y="50" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5a3a85">⑦ 成长力 · 持续学习迭代</text>
+      <text x="450" y="74" text-anchor="middle" font-size="11.8" fill="#6b5b85">审美 · 工艺 · 材料 · 谈单逻辑持续更新</text>
+
+      <path d="M300 92 L600 92 L655 186 L245 186 Z" fill="#f1eaf9" stroke="#c3a9e2" stroke-width="1.6"/>
+      <text x="450" y="122" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5a3a85">⑥ 成交力 · 高质量签单能力</text>
+      <text x="450" y="146" text-anchor="middle" font-size="11.8" fill="#6b5b85">签高价值单 · 签无纠纷单 · 签高复购转介绍单</text>
+      <text x="450" y="172" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5a3a85">⑤ 通透讲解 · 杜绝扯皮</text>
+
+      <path d="M245 186 L655 186 L715 296 L185 296 Z" fill="#e9f1f8" stroke="#8fb4d1" stroke-width="1.6"/>
+      <text x="450" y="214" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4265">② 生活洞察：读懂家庭、习惯、收纳，预判未来 3–10 年变化</text>
+      <text x="450" y="244" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4265">③ 独立主见 · 专业气场：敢建议、敢纠正、敢优化、敢预判</text>
+      <text x="450" y="274" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4265">④ 深度挖需 · 共情共鸣：让客户觉得“最懂我的人是你”</text>
+
+      <path d="M185 296 L715 296 L780 425 L120 425 Z" fill="#dcebf7" stroke="#8fb4d1" stroke-width="1.6"/>
+      <text x="450" y="330" text-anchor="middle" font-size="14.5" font-weight="700" fill="#16283b">① 扎实的硬核专业能力（立身之本）</text>
+      <text x="450" y="358" text-anchor="middle" font-size="12.2" fill="#33506b">设计审美与搭配：风格定位 · 色彩体系 · 空间比例 · 灯光美学 · 全屋软装</text>
+      <text x="450" y="382" text-anchor="middle" font-size="12.2" fill="#33506b">施工工艺：水电规范 · 防水标准 · 墙面地面 · 吊顶结构 · 防开裂防渗漏</text>
+      <text x="450" y="406" text-anchor="middle" font-size="12.2" fill="#33506b">全品类材料：品牌特性 · 环保等级 · 耐用参数 · 适配空间 · 价格体系</text>
+    </svg>
+    <div class="fig-cap"><b>图 12</b> 设计师能力金字塔 —— 硬实力打底，软实力与成交力递进，成长力托顶</div>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">普通 vs 优秀（核心分水岭）</span>
+    普通设计师是「客户要什么做什么」；优秀设计师是「<b>客户不知道自己要什么，我帮你设计更好的生活</b>」。
+  </div>
+
+  <h3>值得反复强调的三个判断</h3>
+  <div class="grid g3">
+    <div class="tile m4"><span class="t-no">1</span><h4>没有主见的两种结局</h4>
+      <p>要么被业主不断压价，签低毛利、低质量、问题多的烂单；要么被业主不信任，最终丢单、流失高端客户。</p></div>
+    <div class="tile m4"><span class="t-no">2</span><h4>高端业主的心理</h4>
+      <p>我愿意花钱找专业的人，需要有人给我专业指导、给我建议、给我方案；不敢把几十万的家交给一个没有思想、没有专业、没有主见的设计师。</p></div>
+    <div class="tile m4"><span class="t-no">3</span><h4>从“装房子”到“装生活”</h4>
+      <p>装修不是装房子，是量身定制客户未来的生活方式。要做到人适配空间，空间服务生活，并预判业主未来 3–10 年的居住变化。</p></div>
+  </div>
+
+  <h3>高度重视设计师团队（管理要求）</h3>
+  <div class="chips">
+    <span class="chip">设计是家装业务核心环节</span>
+    <span class="chip">打造团队是立足行业的关键</span>
+    <span class="chip">广纳优秀设计人才</span>
+    <span class="chip">持续强化培训打磨</span>
+    <span class="chip">锻造强战斗力团队</span>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">总结：什么是优秀的整装设计师？</span>
+    有审美、懂生活、通工艺、知材料、会挖需、有主见、有气场、懂透明、能共情、能锁客、能落地、高毛利、零纠纷、高口碑。<br>
+    不靠低价签单，靠专业赢得尊重；不靠套路成交，靠价值留住客户。
+  </div>
+</section>
+
+<section id="m4-talk">
+  <div class="sec-head">
+    <span class="eyebrow">4.2 谈单闭环</span>
+    <h2>谈单七步法：先诊断，再开方</h2>
+    <p class="lead">互动 → 先听 → 挖需求 → 戳痛点 → 给方案 → 解顾虑 → 透明报价 → 价值塑造 → 临门卡单逼单。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">整体底层原则（背下来）</span>
+    先诊断，再开方；先共情，再讲产品；先解决担心，再谈价格；<b>价值在前，报价在后</b>。<br>
+    客户不是来买装修材料的，是买「省心、靠谱、不踩坑、预算可控、完工效果兑现」。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 600" role="img" aria-label="谈单七步闭环流程图">
+      <circle cx="450" cy="300" r="200" fill="none" stroke="#dce8f2" stroke-width="2" stroke-dasharray="7 7"/>
+      <g fill="#8fb4d1">
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(537 127) rotate(25.7)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(651 251) rotate(77.1)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(611 425) rotate(128.6)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(456 506) rotate(180)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(289 425) rotate(231.4)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(249 251) rotate(282.9)"/>
+        <path d="M-8 -6 L8 0 L-8 6 Z" transform="translate(363 127) rotate(334.3)"/>
+      </g>
+      <g>
+        <circle cx="450" cy="100" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="450" y="80" text-anchor="middle" font-size="11.5" fill="#8fa6bb">01</text>
+        <text x="450" y="104" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">破冰</text>
+        <text x="450" y="126" text-anchor="middle" font-size="12" fill="#4a6076">建立信任</text>
+
+        <circle cx="606" cy="175" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="606" y="155" text-anchor="middle" font-size="11.5" fill="#8fa6bb">02</text>
+        <text x="606" y="179" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">挖需</text>
+        <text x="606" y="201" text-anchor="middle" font-size="12" fill="#4a6076">真实需求</text>
+
+        <circle cx="645" cy="345" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="645" y="325" text-anchor="middle" font-size="11.5" fill="#8fa6bb">03</text>
+        <text x="645" y="349" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">方案</text>
+        <text x="645" y="371" text-anchor="middle" font-size="12" fill="#4a6076">匹配价值</text>
+
+        <circle cx="537" cy="480" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="537" y="460" text-anchor="middle" font-size="11.5" fill="#8fa6bb">04</text>
+        <text x="537" y="484" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">报价</text>
+        <text x="537" y="506" text-anchor="middle" font-size="12" fill="#4a6076">透明讲透</text>
+
+        <circle cx="363" cy="480" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="363" y="460" text-anchor="middle" font-size="11.5" fill="#8fa6bb">05</text>
+        <text x="363" y="484" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">异议</text>
+        <text x="363" y="506" text-anchor="middle" font-size="12" fill="#4a6076">处理化解</text>
+
+        <circle cx="255" cy="345" r="58" fill="#ffffff" stroke="#25537d" stroke-width="2.2"/>
+        <text x="255" y="325" text-anchor="middle" font-size="11.5" fill="#8fa6bb">06</text>
+        <text x="255" y="349" text-anchor="middle" font-size="16" font-weight="700" fill="#1c4364">价值</text>
+        <text x="255" y="371" text-anchor="middle" font-size="12" fill="#4a6076">总结塑造</text>
+
+        <circle cx="294" cy="175" r="58" fill="#fbf4e4" stroke="#b1802a" stroke-width="2.4"/>
+        <text x="294" y="155" text-anchor="middle" font-size="11.5" fill="#c0a05a">07</text>
+        <text x="294" y="179" text-anchor="middle" font-size="16" font-weight="700" fill="#8a6215">卡单</text>
+        <text x="294" y="201" text-anchor="middle" font-size="12" fill="#9a7c3c">锁客成交</text>
+      </g>
+      <text x="450" y="272" text-anchor="middle" font-size="17" font-weight="700" fill="#1c4364">谈单七步闭环</text>
+      <text x="450" y="302" text-anchor="middle" font-size="12.8" fill="#4a6076">先诊断 · 再开方</text>
+      <text x="450" y="324" text-anchor="middle" font-size="12.8" fill="#4a6076">先共情 · 再讲产品</text>
+      <text x="450" y="346" text-anchor="middle" font-size="12.8" fill="#4a6076">先解忧 · 再谈价格</text>
+      <text x="450" y="374" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b1802a">价值在前 · 报价在后</text>
+    </svg>
+    <div class="fig-cap"><b>图 13</b> 谈单七步闭环 —— 七个环节环环相扣，缺一环都不要急着卡单</div>
+  </div>
+
+  <h3>第一步 · 破冰建立信任（开场 5 分钟）</h3>
+  <p><b>目标：</b>放下戒备，不要一上来就推销。<b>核心：</b>不急于讲公司、讲产品，先拉近距离，确认客户基本背景。</p>
+  <div class="callout info">
+    <span class="ct">动作</span>
+    ① 简单寒暄，了解基础信息：房子小区、面积、新房/旧房、入住时间、家里常住人口（老人、小孩）；<b>谁是主要决策人</b>（这点非常关键，很多谈单失败是没找到拍板人）。<br>
+    ② 开场话术导向：今天不是推销，是帮您把这套房子的装修思路理清楚，帮您避开装修常见的坑，算一笔完整的全套预算。
+  </div>
+  <div class="callout warn">
+    <span class="ct">禁忌</span>
+    一坐下就翻案例、讲工艺、报单价。客户还没说出想法，你讲再多都是自说自话。
+  </div>
+
+  <h3>第二步 · 挖掘真实需求（核心环节，多听少说）</h3>
+  <div class="figure">
+    <svg viewBox="0 0 900 350" role="img" aria-label="挖需三层提问金字塔">
+      <path d="M310 24 L590 24 L640 116 L260 116 Z" fill="#e9f1f8" stroke="#8fb4d1" stroke-width="1.6"/>
+      <text x="450" y="56" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4265">① 表层需求 · 想要什么</text>
+      <text x="450" y="82" text-anchor="middle" font-size="12.2" fill="#4a6076">喜欢什么风格？有没有参考图片？</text>
+      <text x="450" y="102" text-anchor="middle" font-size="12.2" fill="#4a6076">各房间有无特别功能？自住还是偶尔住、打算住几年？</text>
+
+      <path d="M260 116 L640 116 L695 216 L205 216 Z" fill="#dcebf7" stroke="#8fb4d1" stroke-width="1.6"/>
+      <text x="450" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#1d4265">② 深层需求 · 生活习惯</text>
+      <text x="450" y="176" text-anchor="middle" font-size="12.2" fill="#33506b">平时在家做饭多不多？家里东西多不多，对储物要求高不高？</text>
+      <text x="450" y="198" text-anchor="middle" font-size="12.2" fill="#33506b">平时喜欢简约好打理，还是颜值优先？</text>
+
+      <path d="M205 216 L695 216 L755 326 L145 326 Z" fill="#c9dff0" stroke="#6c9cc4" stroke-width="1.8"/>
+      <text x="450" y="250" text-anchor="middle" font-size="15" font-weight="700" fill="#16283b">③ 隐性需求 · 真正在意的点</text>
+      <text x="450" y="276" text-anchor="middle" font-size="12.2" fill="#2c4b66">装修这件事，您最担心哪一块？（引导客户自己说出痛点）</text>
+      <text x="450" y="298" text-anchor="middle" font-size="12.2" fill="#2c4b66">之前有没有了解过其他装修公司？哪些地方让您不满意、不放心？</text>
+    </svg>
+    <div class="fig-cap"><b>图 14</b> 挖需三层提问 —— 由浅入深，逐层逼近客户真实诉求</div>
+  </div>
+
+  <div class="callout tip">
+    <span class="ct">重点</span>
+    客户嘴上说要便宜，内心真正的诉求往往是：怕偷工减料、怕后期疯狂增项、怕工人乱搞、怕预算兜不住、怕效果图和完工不一样、售后找不到人。
+  </div>
+
+  <h3>谈单时需捕捉的七大客户痛点</h3>
+  <div class="grid g2">
+    <div class="tile m4"><span class="t-no">1</span><h4>怕漏项增项</h4><p>前期低价，施工中途不断加价，预算失控。</p></div>
+    <div class="tile m4"><span class="t-no">2</span><h4>怕施工质量差</h4><p>工艺粗糙，墙面开裂、防水漏水。</p></div>
+    <div class="tile m4"><span class="t-no">3</span><h4>怕工人没人管</h4><p>游击队式施工，工期拖延，现场脏乱。</p></div>
+    <div class="tile m4"><span class="t-no">4</span><h4>怕材料以次充好</h4><p>样板间看的是好货，送到家换成次品。</p></div>
+    <div class="tile m4"><span class="t-no">5</span><h4>怕供应链不稳</h4><p>材料缺货、延期到货耽误工期。</p></div>
+    <div class="tile m4"><span class="t-no">6</span><h4>怕效果图翻车</h4><p>效果图好看，落地后不是想要的样子。</p></div>
+    <div class="tile m4" style="grid-column:span 2"><span class="t-no">7</span><h4>怕售后推诿</h4><p>出问题找不到负责人，没人兜底。</p></div>
+  </div>
+
+  <h3>第三步 · 匹配方案，针对性输出价值</h3>
+  <p><b>逻辑：</b>客户提一个需求/担忧，对应给出一套解决方案，不要泛泛介绍公司，要做到「<b>你的痛点，我们专门这样解决</b>」。</p>
+  <table>
+    <thead><tr><th style="width:38%">客户担心</th><th>对应输出</th></tr></thead>
+    <tbody>
+      <tr><td>担心增项</td><td>讲我们的一口价模式</td></tr>
+      <tr><td>担心材料差</td><td>讲供应链体系、品牌品质保障</td></tr>
+      <tr><td>担心工地没人管</td><td>讲公司施工管理体系、巡检标准</td></tr>
+      <tr><td>担心工艺不行</td><td>展示标准化工艺节点、施工规范、工地实拍案例</td></tr>
+    </tbody>
+  </table>
+  <div class="callout info">
+    <span class="ct">输出顺序</span>
+    ① 结合客户户型 + 生活习惯，讲平面布局方案，解决功能需求（先讲怎么住得舒服）；<br>
+    ② 再针对客户刚才说出的顾虑，逐一对应我们的保障体系——供应链（材料保真、到货周期可控）、施工工艺（统一标准、节点验收）、工人管理（公司直管，不是外包转包）。<br>
+    <b>核心：</b>不是单纯夸公司大，而是告诉客户——这套管理体系，是专门解决你担心的 XX 问题。
+  </div>
+
+  <h3>第四步 · 透明报价讲解（重中之重）</h3>
+  <p><b>原则：</b>报价要算总账，不单独报单项，把所有相关花费一次性讲透。</p>
+  <div class="steps">
+    <div class="step"><div class="ball">1</div><div class="bd"><h4>先说明一口价</h4><p>我们是一口价，杜绝恶意漏项，报价清单里包含项目全部列明，不会施工中途随便加钱。</p></div></div>
+    <div class="step"><div class="ball">2</div><div class="bd"><h4>分层拆解费用</h4><p>套餐标配包含哪些项目、材料；哪些属于升级项目（升级项是什么、差价多少，提前明示）；哪些是套餐外需业主自行外购的东西（美缝剂、软装等），全部提前讲清楚。</p></div></div>
+    <div class="step"><div class="ball">3</div><div class="bd"><h4>算出落地总预估花费</h4><p>让客户清晰知道：整套房子全部落地大概一共要准备多少钱。</p></div></div>
+  </div>
+  <div class="callout quote">
+    <span class="ct">核心价值塑造</span>
+    别家低价是“半包 + 大量后期增项”，看着便宜，最后总花费更高；我们前期一次性把所有项目讲透，预算可控，<b>买的是确定性，不是低价陷阱</b>。
+  </div>
+  <div class="callout warn">
+    <span class="ct">禁忌</span>
+    不要客户一问价格就直接报总价。一定是方案、保障讲完之后，再拆解报价。
+  </div>
+
+  <h3>第五步 · 异议处理（先共情，再解释，再给佐证）</h3>
+  <div class="grid g2">
+    <div class="tile m4"><span class="t-no">客</span><h4>客户说</h4><p>“你们价格好像比别家贵一点。”</p></div>
+    <div class="tile m4"><span class="t-no">应</span><h4>我们回</h4><p>我理解您会对比价格。很多公司前期报价低，是很多项目没有写进去，后期施工陆续增项。我们一口价，项目全部写清楚，<b>您对比的不是单价，是整套落地的总成本、风险成本。</b></p></div>
+  </div>
+  <div class="callout tip">
+    <span class="ct">工具佐证</span>
+    工地实拍、工艺样板、完整预算清单、往期客户完工案例、验收记录——用实物与资料增强可信度。
+  </div>
+
+  <h3>第六步 · 价值总结，建立价值感知</h3>
+  <div class="callout info">
+    <span class="ct">收拢一句话</span>
+    简单来说，我们给您的，不只是装修施工，是<b>一套完整的落地保障</b>：方案匹配您家庭生活需求；供应链和标准化工艺保障材料、施工质量；一口价完整清单让预算可控、杜绝后期扯皮。
+  </div>
+
+  <h3>第七步 · 卡单逼单（前面环节没做好，不要逼单）</h3>
+  <p><b>思路：</b>不是降价逼单，是<b>权益、名额、活动窗口期</b>逼单，守住毛利率，不打价格战。</p>
+  <div class="grid g4">
+    <div class="tile m4"><span class="t-no">1</span><h4>名额 / 档期</h4><p>近期工地排期紧张，现在锁定，可以优先排优秀施工班组。</p></div>
+    <div class="tile m4"><span class="t-no">2</span><h4>活动权益</h4><p>当前活动赠送配套服务（赠品、升级优惠、工艺升级等），<b>不直接降价</b>。</p></div>
+    <div class="tile m4"><span class="t-no">3</span><h4>风险提醒</h4><p>装修早锁定方案，材料价格波动风险提前锁定，避免后期材料涨价。</p></div>
+    <div class="tile m4"><span class="t-no">4</span><h4>行动指令</h4><p>今天可以先签订意向，锁定方案、报价和当前权益，后续细化图纸，预算保持不变。</p></div>
+  </div>
+  <div class="callout quote">
+    <span class="ct">原则</span>
+    逼单的核心是<b>锁定方案与一口价预算</b>，不是单纯靠降价。守住价值，不陷入价格比拼。
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 300" role="img" aria-label="谈单结果闭环分支图">
+      <rect x="200" y="20" width="500" height="62" rx="15" fill="#25537d"/>
+      <text x="450" y="50" text-anchor="middle" font-size="13.6" font-weight="700" fill="#ffffff">完整谈单闭环一句话总结</text>
+      <text x="450" y="70" text-anchor="middle" font-size="12" fill="#cfe1f0">倾听需求 → 识别痛点 → 定制方案 → 打消顾虑 → 透明一口价 → 塑造价值感 → 合理卡单</text>
+      <path d="M450 82 L450 108" stroke="#c9d8e6" stroke-width="2"/>
+      <path d="M215 108 L685 108" stroke="#c9d8e6" stroke-width="2"/>
+      <path d="M215 108 L215 132" stroke="#c9d8e6" stroke-width="2"/>
+      <path d="M685 108 L685 132" stroke="#c9d8e6" stroke-width="2"/>
+
+      <rect x="60" y="132" width="310" height="146" rx="15" fill="#e6f5ef" stroke="#a9dcc9" stroke-width="1.6"/>
+      <text x="215" y="164" text-anchor="middle" font-size="15" font-weight="700" fill="#12664c">① 顺利逼单成功</text>
+      <text x="215" y="192" text-anchor="middle" font-size="13" fill="#3c5a72">签单成交</text>
+      <text x="215" y="222" text-anchor="middle" font-size="12.2" fill="#6b7d90">进入交付与口碑裂变环节</text>
+      <text x="215" y="248" text-anchor="middle" font-size="12.2" fill="#6b7d90">把“预算＝结算”兑现到位</text>
+
+      <rect x="530" y="132" width="310" height="146" rx="15" fill="#fbeee2" stroke="#e8cda8" stroke-width="1.6"/>
+      <text x="685" y="164" text-anchor="middle" font-size="15" font-weight="700" fill="#9c5520">② 暂时不能签</text>
+      <text x="685" y="192" text-anchor="middle" font-size="13" fill="#5b5044">明确二次到店的条件和时间</text>
+      <text x="685" y="222" text-anchor="middle" font-size="12.2" fill="#7a6a58">立刻启动再复盘，持续跟单</text>
+      <text x="685" y="248" text-anchor="middle" font-size="12.2" font-weight="700" fill="#c0392b">穷追猛打，绝不轻言放弃</text>
+    </svg>
+    <div class="fig-cap"><b>图 15</b> 谈单结果双闭环 —— 签单，或者进入下一轮复盘与跟单</div>
+  </div>
+</section>
+
+<section id="m4-rate">
+  <div class="sec-head">
+    <span class="eyebrow">4.3 提高转单率</span>
+    <h2>转单五步法：反复训练、复盘再复盘</h2>
+    <p class="lead">提高转单率，是我们当前急需快速解决的课题——<b>反复训练训练再训练，复盘复盘再复盘！</b>转单率代表团队的专业能力，是业绩增长的核心命脉。</p>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">真实案例</span>
+    兰宏卷团队为了一个单进行复盘，可以复盘一两个小时——是一两个小时，为了一个单！其目的就是深刻挖掘客户需求、客户痛点，并且找到相应的解决方案，反复推敲，反复模拟，从而达到成功签单。
+  </div>
+
+  <p><b>核心逻辑：</b>挖掘需求 → 捕捉痛点 → 输出匹配价值 → 复盘找突破口 → 锁客成交。</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 230" role="img" aria-label="转单五步法流程图">
+      <text x="450" y="34" text-anchor="middle" font-size="14.5" font-weight="700" fill="#7a4fb0">转单五步法 —— 从一个单到一套可复制的打法</text>
+      <path d="M32 60 L190 60 L212 120 L190 180 L32 180 L10 120 Z" fill="#f1eaf9" stroke="#c3a9e2" stroke-width="1.5"/>
+      <text x="110" y="127" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5a3a85">挖掘需求</text>
+
+      <path d="M192 60 L350 60 L372 120 L350 180 L192 180 L170 120 Z" fill="#e9dcf6" stroke="#c3a9e2" stroke-width="1.5"/>
+      <text x="270" y="127" text-anchor="middle" font-size="14.5" font-weight="700" fill="#5a3a85">捕捉痛点</text>
+
+      <path d="M352 60 L510 60 L532 120 L510 180 L352 180 L330 120 Z" fill="#ddc9f0" stroke="#b795df" stroke-width="1.5"/>
+      <text x="430" y="127" text-anchor="middle" font-size="14.5" font-weight="700" fill="#4f3280">输出价值</text>
+
+      <path d="M512 60 L670 60 L692 120 L670 180 L512 180 L490 120 Z" fill="#c9abdf" stroke="#a37fd0" stroke-width="1.5"/>
+      <text x="590" y="127" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">复盘破局</text>
+
+      <path d="M672 60 L830 60 L852 120 L830 180 L672 180 L650 120 Z" fill="#7a4fb0" stroke="#6a3fa0" stroke-width="1.5"/>
+      <text x="750" y="127" text-anchor="middle" font-size="14.5" font-weight="700" fill="#ffffff">锁客成交</text>
+
+      <text x="450" y="212" text-anchor="middle" font-size="12.5" fill="#6b7d90">找准靶子 → 找到矛盾点 → 对症下药 → 破局关键 → 临门一脚</text>
+    </svg>
+    <div class="fig-cap"><b>图 16</b> 转单五步法 —— 五步环环相扣，把一次谈单变成可复制的成功经验</div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="ball">1</div><div class="bd">
+      <h4>深度挖需求，把客户信息摸透（找准靶子）</h4>
+      <p>目标：要搞懂「客户真正想要什么、害怕什么」。</p>
+    </div></div>
+    <div class="step"><div class="ball">2</div><div class="bd">
+      <h4>识别真实痛点，区分表象问题和底层顾虑（找到矛盾点）</h4>
+      <p>很多客户嘴上说“价格贵”，底层痛点是：怕不值、怕踩坑、怕后期一堆增项。</p>
+    </div></div>
+    <div class="step"><div class="ball">3</div><div class="bd">
+      <h4>针对性输出价值，用价值匹配痛点，建立信任（对症下药）</h4>
+      <p>客户有什么痛点，就输出对应的价值点。如客户怕增项 → 讲解透明预算、全部写入电子合同，套餐包含与升级项全部列明，杜绝口头承诺。</p>
+      <div class="callout tip" style="margin:10px 0 0">
+        <span class="ct">沟通原则</span>
+        讲证据，少讲口号。
+      </div>
+    </div></div>
+    <div class="step"><div class="ball">4</div><div class="bd">
+      <h4>部长、设计师、家装顾问复盘对单，寻找签单突破口（破局关键）</h4>
+      <p>复盘 4 个核心问题：① 客户真实需求是什么？② 核心痛点是哪几点？③ 本次沟通哪些点打动了客户？④ 客户还存在哪些异议、抗拒点？</p>
+      <div class="callout warn" style="margin:10px 0 0">
+        <span class="ct">时间要求</span>
+        客户离场 <b>2 小时之内</b>完成复盘，<b>不隔夜</b>。很多单子拖一拖就被竞争对手抢走了。
+      </div>
+    </div></div>
+    <div class="step"><div class="ball">5</div><div class="bd">
+      <h4>抓住契机锁客，闭环促成签单（临门一脚）</h4>
+      <p>当客户需求清楚、痛点被回应、异议逐步减少，就要主动创造锁客契机，<b>不能无限期“再考虑”</b>。</p>
+    </div></div>
+  </div>
+
+  <div class="callout quote">
+    <span class="ct">本模块核心</span>
+    转单率代表团队的专业能力，是业绩增长的核心命脉。<b>反复训练训练再训练，复盘复盘再复盘！</b>
+  </div>
+</section>
+
+<section id="end">
+  <div class="endnote">
+    <h2>核心金句墙</h2>
+    <p>四个模块，七句话。建议打印张贴，每日晨会诵读。</p>
+    <div class="qwall">
+      <div class="qcard"><b>战略</b><span>放弃规模扩张，聚焦小而美高质量经营。以专业赢信任、以品质赢口碑、以精细赢利润。</span></div>
+      <div class="qcard"><b>成本</b><span>在缩量时代：省钱就是利润，控费就是竞争力，精细就是生存力。</span></div>
+      <div class="qcard"><b>管理</b><span>不要靠人的自觉，不能简单地靠嘴说——全部靠制度、靠表格、靠痕迹、靠监督、靠奖惩。</span></div>
+      <div class="qcard"><b>渠道</b><span>利益是基础，信任是核心，口碑是生命线。报备留痕，佣金守诺，不把装修纠纷转嫁中介。</span></div>
+      <div class="qcard"><b>跟单</b><span>客户可以犹豫，我们不能放弃；客户可以沉默，我们不能失联。穷追猛打，一直跟到签单成功！</span></div>
+      <div class="qcard"><b>谈单</b><span>先诊断再开方，先共情再讲产品，先解决担心再谈价格。价值在前，报价在后。</span></div>
+      <div class="qcard"><b>设计师</b><span>不靠低价签单，靠专业赢得尊重；不靠套路成交，靠价值留住客户。</span></div>
+      <div class="qcard"><b>转单</b><span>转单率代表团队的专业能力，是业绩增长的核心命脉。反复训练，复盘再复盘。</span></div>
+    </div>
+    <div class="big">以专业赢信任 · 以品质赢口碑 · 以精细赢利润</div>
+    <p style="font-size:13px;opacity:.72">本课件依据《第一篇：小而美的经营战略》《第二篇：家装顾问管理与培训》《第三篇：跟单方法及要求》《第四篇：设计师培训及谈单要求》整理汇编 · 团队内部培训使用</p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var pbar = document.getElementById('pbar');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  var targets = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
+
+  function onScroll(){
+    var h = document.documentElement;
+    var sc = window.pageYOffset || h.scrollTop || 0;
+    var max = h.scrollHeight - h.clientHeight;
+    pbar.style.width = (max > 0 ? (sc / max * 100) : 0) + '%';
+
+    var idx = 0;
+    for (var i = 0; i < targets.length; i++){
+      var t = targets[i];
+      if (t && t.getBoundingClientRect().top <= 140) idx = i;
+    }
+    for (var j = 0; j < links.length; j++) links[j].classList.remove('active');
+    if (links[idx]) links[idx].classList.add('active');
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  var sidebar = document.getElementById('sidebar');
+  var btn = document.getElementById('menuBtn');
+  btn.addEventListener('click', function(){ sidebar.classList.toggle('open'); });
+  links.forEach(function(a){
+    a.addEventListener('click', function(){
+      if (window.innerWidth <= 1024) sidebar.classList.remove('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
+
